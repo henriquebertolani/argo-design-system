@@ -224,7 +224,98 @@ body {
   align-items: center;
 
 }
+/* ============================================================
+   FIX GLOBAL — STATES, BADGES, CALENDAR, DRIVER PHOTO
+   ============================================================ */
 
+/* BUTTON STATES — TODOS */
+
+.btn-system,
+.btn-success,
+.btn-warning,
+.btn-attention,
+.btn-neutral {
+  border-color: var(--btn-border-default);
+}
+
+.btn-system:hover,
+.btn-system:active {
+  border-color: var(--btn-border-neutral) !important;
+}
+
+.btn-success:hover,
+.btn-success:active {
+  border-color: var(--btn-border-success) !important;
+}
+
+.btn-warning:hover,
+.btn-warning:active {
+  border-color: var(--btn-border-warning) !important;
+}
+
+.btn-attention:hover,
+.btn-attention:active {
+  border-color: var(--btn-border-attention) !important;
+}
+
+
+
+/* CALENDAR — REMOVE GAP */
+
+.calendar-days {
+  gap: 0 !important;
+}
+
+.cal-day {
+  margin: 0 !important;
+}
+
+
+
+/* DRIVER PHOTO — BOTÃO EMBAIXO ESQUERDO */
+
+.avatar-delete-btn {
+
+  left: 0 !important;
+  right: auto !important;
+
+  bottom: 0 !important;
+  top: auto !important;
+
+}
+
+
+
+/* BADGE — REMOVE ESPAÇO DIREITA */
+
+.badge {
+  width: auto;
+  justify-content: flex-start;
+}
+
+
+
+/* STATUS INACTIVE CORRETA */
+
+.status-disabled {
+  background: var(--feedback-inactive-surface);
+  color: var(--feedback-inactive-text);
+}
+
+
+
+/* SWITCH DARK MODE POSIÇÃO */
+
+.theme-switch {
+
+  position: fixed;
+
+  top: 16px;
+  right: 16px;
+
+  z-index: 9999;
+
+}
 </style>
 
 </head>
@@ -329,8 +420,75 @@ document
     );
 
   });
+/* DARK MODE */
 
+document
+  .querySelectorAll(".theme-switch .toggle-wrap")
+  .forEach(wrap => {
+
+    wrap.addEventListener("click", () => {
+
+      const track =
+        wrap.querySelector(".toggle-track");
+
+      track.classList.toggle("on");
+      track.classList.toggle("off");
+
+      const root =
+        document.documentElement;
+
+      if (root.dataset.theme === "dark") {
+
+        root.dataset.theme = "light";
+
+      } else {
+
+        root.dataset.theme = "dark";
+
+      }
+
+    });
+
+  });
+
+
+
+/* DATE FIELD — OPEN CALENDAR */
+
+document
+  .querySelectorAll(".field-date-wrap")
+  .forEach(field => {
+
+    field.addEventListener("click", () => {
+
+      const calendar =
+        document.querySelector(".calendar");
+
+      if (!calendar) return;
+
+      calendar.style.display =
+        calendar.style.display === "block"
+          ? "none"
+          : "block";
+
+    });
+
+  });
 </script>
+<!-- DARK MODE SWITCH -->
 
+<div class="theme-switch">
+
+<label class="toggle-wrap">
+
+<div class="toggle-track off">
+
+<div class="toggle-thumb"></div>
+
+</div>
+
+</label>
+
+</div>
 </body>
 </html>
