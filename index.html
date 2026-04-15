@@ -861,11 +861,18 @@ body {
 
 .toggle-wrap.disabled .toggle-track {
   background: var(--bg-muted);
+
   border: var(--border-s) solid var(--border-subtle);
 }
 
 .toggle-wrap.disabled .toggle-thumb {
   background: var(--icon-inactive);
+}
+   
+.toggle-wrap:hover .toggle-track.off {
+  background: var(--bg-subtle);
+
+  border: var(--border-s) solid var(--border-emphasis);
 }
 
 /* ============================================================
@@ -1104,11 +1111,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--text-regular);
-  cursor: pointer;
-  transition: background 0.1s;
+  margin: 0;
 }
 
 .cal-day:hover { background: var(--bg-subtle); }
@@ -1124,9 +1127,11 @@ body {
   border-radius: 0 var(--radius-full) var(--radius-full) 0;
   font-weight: 500;
 }
-.cal-day.interval {
-  background: var(--feedback-inactive-surface);
-  border-radius: 0;
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 30px);
+  gap: 0;
+  justify-content: space-between;
 }
 .cal-day.today { font-weight: 600; color: var(--feedback-neutral-text); }
 
@@ -1371,7 +1376,7 @@ body {
 .avatar-edit-btn .material-icons-round { font-size: 12px; color: var(--icon-default); }
 
 .avatar-delete-btn {
-   position: absolute;
+  position: absolute;
 
   top: 0;
   right: 0;
@@ -1379,7 +1384,7 @@ body {
   width: 20px;
   height: 20px;
 
-  background: var(--btn-primary-default);
+  background: var(--bg-elevated);
 
   border: var(--border-s) solid var(--border-default);
 
@@ -1506,6 +1511,7 @@ body {
   background: var(--feedback-inactive-surface);
   border-radius: 0;
   margin: 0;
+  position: relative;
 }
 
 .cal-day.selected-final {
