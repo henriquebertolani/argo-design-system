@@ -1393,6 +1393,71 @@ body {
 .ds-tab:hover { color: var(--text-regular); }
 .ds-tab.active { color: var(--text-regular); border-bottom-color: var(--text-regular); font-weight: 500; }
 </style>
+
+<!-- PATCH: icon font + button + calendar fixes -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,200,0,0" rel="stylesheet">
+
+<style>
+
+/* Ensure icons render as icons, not text */
+.material-icons-round,
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 200,
+    'GRAD' 0,
+    'opsz' 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BUTTON DEFAULT — always neutral border */
+.btn,
+[class*="btn-"] {
+  border-color: var(--btn-border-default) !important;
+}
+
+/* Semantic border only on hover / pressed */
+.btn-system:hover,
+.btn-system:active {
+  border-color: var(--btn-border-neutral) !important;
+}
+
+.btn-success:hover,
+.btn-success:active {
+  border-color: var(--btn-border-success) !important;
+}
+
+.btn-attention:hover,
+.btn-attention:active {
+  border-color: var(--btn-border-attention) !important;
+}
+
+.btn-warning:hover,
+.btn-warning:active {
+  border-color: var(--btn-border-warning) !important;
+}
+
+/* CALENDAR RANGE — continuous fill */
+.cal-day.selected-initial {
+  background: var(--border-default);
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+.cal-day.interval {
+  background: var(--feedback-inactive-surface);
+  border-radius: 0;
+}
+
+.cal-day.selected-final {
+  background: var(--border-default);
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+</style>
+
 </head>
 <body>
 
