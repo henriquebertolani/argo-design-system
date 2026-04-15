@@ -6,7 +6,6 @@
 <title>Argo Design System — playmoove</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="Material Symbols Rounded" rel="stylesheet">
 <style>
 /* ============================================================
    ARGO DESIGN SYSTEM — CSS TOKENS
@@ -2630,13 +2629,6 @@ Changes implemented respecting original layout:
 </div>
 
 <script>
-// Tab navigation
-document.querySelectorAll('.ds-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.ds-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-  });
-});
 
 // Interactive toggles
 document.querySelectorAll('.toggle-wrap:not(.disabled)').forEach(wrap => {
@@ -2673,49 +2665,76 @@ document.querySelectorAll('.radio-wrap:not(.disabled)').forEach(wrap => {
 // Calendar day clicks
 let startDay = null;
 
-document.querySelectorAll('.cal-day:not(.inactive):not(.disabled)').forEach(day => {
+document
+  .querySelectorAll('.cal-day:not(.inactive):not(.disabled)')
+  .forEach(day => {
 
-  day.addEventListener('click', () => {
+    day.addEventListener('click', () => {
 
-    if (!startDay) {
+      if (!startDay) {
 
-      startDay = day;
+        startDay = day;
 
-      day.classList.add('selected-initial');
+        day.classList.add(
+          'selected-initial'
+        );
 
-      return;
+        return;
 
-    }
+      }
 
-    const days = Array.from(
-      document.querySelectorAll('.cal-day')
-    );
-
-    const startIndex = days.indexOf(startDay);
-    const endIndex = days.indexOf(day);
-
-    const min = Math.min(startIndex, endIndex);
-    const max = Math.max(startIndex, endIndex);
-
-    days.forEach(d => {
-      d.classList.remove(
-        'selected-initial',
-        'selected-final',
-        'interval'
+      const days = Array.from(
+        document.querySelectorAll('.cal-day')
       );
+
+      const startIndex =
+        days.indexOf(startDay);
+
+      const endIndex =
+        days.indexOf(day);
+
+      const min =
+        Math.min(startIndex, endIndex);
+
+      const max =
+        Math.max(startIndex, endIndex);
+
+      days.forEach(d => {
+
+        d.classList.remove(
+          'selected-initial',
+          'selected-final',
+          'interval'
+        );
+
+      });
+
+      days[min].classList.add(
+        'selected-initial'
+      );
+
+      days[max].classList.add(
+        'selected-final'
+      );
+
+      for (
+        let i = min + 1;
+        i < max;
+        i++
+      ) {
+
+        days[i].classList.add(
+          'interval'
+        );
+
+      }
+
+      startDay = null;
+
     });
 
-    days[min].classList.add('selected-initial');
-    days[max].classList.add('selected-final');
-
-    for (let i = min + 1; i < max; i++) {
-      days[i].classList.add('interval');
-    }
-
-    startDay = null;
-
 });
-
+   
 // Year cell clicks
 document.querySelectorAll('.cal-year-cell:not(.disabled)').forEach(cell => {
   cell.addEventListener('click', () => {
