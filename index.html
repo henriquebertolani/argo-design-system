@@ -6,7 +6,7 @@
 <title>Argo Design System — playmoove</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link href="Material Symbols Rounded" rel="stylesheet">
 <style>
 /* ============================================================
    ARGO DESIGN SYSTEM — CSS TOKENS
@@ -760,7 +760,7 @@ body {
 }
 
 .checkbox-control.checked {
-  border-color: var(--btn-border-default);
+  border-color: var(--btn-border-success);
 }
 
 .checkbox-control.checked .material-icons-round {
@@ -804,23 +804,9 @@ body {
   border: var(--border-s) solid var(--btn-border-default);
 }
 
-.toggle-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: var(--radius-full);
-  background: #FFFFFF; /* explicit — não herdar */
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
+..toggle-wrap.disabled .toggle-thumb {
+  background: var(--icon-inactive);
 }
-
-.toggle-track.on .toggle-thumb { transform: translateX(20px); }
-.toggle-track.off .toggle-thumb { transform: translateX(0); }
-
-.toggle-wrap:hover .toggle-track.off { background: var(--bg-subtle); border-color: var(--border-emphasis); }
-.toggle-wrap.disabled { pointer-events: none; }
-.toggle-wrap.disabled .toggle-track.on { background: var(--feedback-neutral-surface-disabled); }
-.toggle-wrap.disabled .toggle-track.off { background: var(--bg-muted); }
-.toggle-wrap.disabled .toggle-thumb { background: var(--icon-inactive); cursor: not-allowed; }
 
 /* ============================================================
    BREADCRUMB
@@ -1324,22 +1310,29 @@ body {
 
 .avatar-edit-btn .material-icons-round { font-size: 12px; color: var(--icon-default); }
 
-.avatar-delete-btn {
+..avatar-delete-btn {
   position: absolute;
   bottom: 0;
   left: 0;
+
   width: 20px;
   height: 20px;
-  background: var(--bg-muted);
+
+  background: var(--btn-primary-pressed);
+
   border-radius: var(--radius-full);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+
   cursor: pointer;
 }
 
-.avatar-delete-btn .material-icons-round { font-size: 12px; color: var(--icon-subtle); }
+.avatar-delete-btn .material-icons-round {
+  font-size: 16px;
+  color: var(--icon-default);
+}
 
 /* ============================================================
    UTILITY
@@ -1415,9 +1408,8 @@ body {
 }
 
 /* BUTTON DEFAULT — always neutral border */
-.btn,
-[class*="btn-"] {
-  border-color: var(--btn-border-default) !important;
+.btn {
+  border-color: var(--btn-border-default);
 }
 
 /* Semantic border only on hover / pressed */
@@ -2612,7 +2604,7 @@ document.querySelectorAll('.radio-wrap:not(.disabled)').forEach(wrap => {
 // Calendar day clicks
 document.querySelectorAll('.cal-day:not(.inactive):not(.disabled)').forEach(day => {
   day.addEventListener('click', () => {
-    day.style.background = day.style.background ? '' : 'var(--border-default)';
+    day.classList.toggle('selected-initial'); = day.classList.add('interval'); ? '' : 'var(--border-default)';
   });
 });
 
