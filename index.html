@@ -809,7 +809,10 @@ body {
 .checkbox-wrap.disabled .checkbox-control { background: var(--bg-muted); border-color: var(--border-subtle); }
 .checkbox-wrap.disabled .checkbox-control .material-icons-round { color: var(--icon-disabled); }
 
-/* TOGGLE */
+/* ============================================================
+   TOGGLE
+   ============================================================ */
+
 .toggle-wrap {
   display: inline-flex;
   align-items: center;
@@ -818,18 +821,27 @@ body {
   user-select: none;
 }
 
+/* TRACK */
+
 .toggle-track {
   width: 44px;
   height: 24px;
+
   border-radius: var(--radius-full);
+
   padding: 3px;
+
   display: flex;
   align-items: center;
-  transition: background 0.2s;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.toggle-thumb {
+/* THUMB */
 
+.toggle-thumb {
   width: 18px;
   height: 18px;
 
@@ -837,9 +849,12 @@ body {
 
   background: var(--bg-default);
 
-  transition: transform 0.2s;
-
+  transition: transform 0.2s ease;
 }
+
+/* =========================
+   ON
+   ========================= */
 
 .toggle-track.on {
   background: var(--feedback-neutral);
@@ -849,10 +864,18 @@ body {
   transform: translateX(20px);
 }
 
+/* =========================
+   OFF
+   ========================= */
+
 .toggle-track.off {
   background: var(--bg-muted);
   border: var(--border-s) solid var(--border-default);
 }
+
+/* =========================
+   DISABLED — STATE AGNOSTIC
+   ========================= */
 
 .toggle-wrap.disabled {
   pointer-events: none;
@@ -866,10 +889,6 @@ body {
 
 .toggle-wrap.disabled .toggle-thumb {
   background: var(--feedback-inactive-icon);
-}
-
-.toggle-wrap.disabled .toggle-track.on {
-  background: var(--feedback-inactive-surface);
 }
 
 /* ============================================================
@@ -2262,7 +2281,7 @@ Changes implemented respecting original layout:
           <div style="margin-bottom:12px;"><div class="ds-frame-label" style="margin-bottom:8px;">On</div>
             <div style="display:flex;flex-direction:column;gap:8px;">
               <label class="toggle-wrap"><div class="toggle-track on"><div class="toggle-thumb"></div></div><span class="body-medium-reg">Label</span></label>
-              <label class="toggle-wrap disabled"><div class="toggle-track on" style="background:var(--feedback-neutral-surface-disabled);"><div class="toggle-thumb" style="background:var(--icon-inactive);"></div></div><span class="body-medium-reg text-disabled">Disabled</span></label>
+              <label class="toggle-wrap disabled"><div class="toggle-track on"><div class="toggle-thumb" style="background:var(--icon-inactive);"></div></div><span class="body-medium-reg text-disabled">Disabled</span></label>
             </div>
           </div>
           <div><div class="ds-frame-label" style="margin-bottom:8px;">Off</div>
