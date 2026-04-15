@@ -4,22 +4,2824 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Argo Design System — playmoove</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ARGO DESIGN SYSTEM — CSS TOKENS
+   ============================================================ */
+:root {
+  /* TEXT */
+  --text-regular: #272727;
+  --text-subtle: #8A8A8A;
+  --text-accent: #565656;
+  --text-disabled: #C1C1C9;
+  --text-on-dark: #F0F0F0;
+
+  /* BACKGROUND */
+  --bg-default: #FCFCFC;
+  --bg-elevated: #F7F7F7;
+  --bg-raised: #F4F4F4;
+  --bg-subtle: #F0F0F0;
+  --bg-muted: #E1E1E1;
+
+  /* BORDER */
+  --border-default: #D0D0D0;
+  --border-subtle: #E1E1E1;
+  --border-emphasis: #8A8A8A;
+
+  /* FEEDBACK — SUCCESS */
+  --feedback-success: #00D065;
+  --feedback-success-surface: #E6FAF2;
+  --feedback-success-text: #1D8644;
+  --feedback-success-icon: #00D065;
+  --feedback-success-icon-strong: #1D8644;
+  --feedback-success-surface-disabled: #EEF6F2;
+
+  /* FEEDBACK — ATTENTION */
+  --feedback-attention: #FFB200;
+  --feedback-attention-surface: #FFF8E6;
+  --feedback-attention-text: #A37315;
+  --feedback-attention-icon: #FFB200;
+  --feedback-attention-icon-strong: #A37315;
+  --feedback-attention-surface-disabled: #FBF6EA;
+
+  /* FEEDBACK — WARNING */
+  --feedback-warning: #FF153C;
+  --feedback-warning-surface: #FFE6E9;
+  --feedback-warning-text: #A4202A;
+  --feedback-warning-icon: #FF153C;
+  --feedback-warning-icon-strong: #A4202A;
+  --feedback-warning-surface-disabled: #FBEDEF;
+
+  /* FEEDBACK — NEUTRAL */
+  --feedback-neutral: #2F6BFF;
+  --feedback-neutral-surface: #EBF8FF;
+  --feedback-neutral-text: #1F3FA8;
+  --feedback-neutral-icon: #2F6BFF;
+  --feedback-neutral-icon-strong: #1F3FA8;
+  --feedback-neutral-surface-disabled: #EDF3FA;
+
+  /* FEEDBACK — INACTIVE */
+  --feedback-inactive: #1C1C1C;
+  --feedback-inactive-surface: #F4F4F4;
+  --feedback-inactive-text: #3E3E3E;
+  --feedback-inactive-icon: #565656;
+  --feedback-inactive-icon-strong: #3E3E3E;
+
+  /* BUTTON BACKGROUNDS */
+  --btn-primary-default: #F4F4F4;
+  --btn-primary-hover: #F0F0F0;
+  --btn-primary-pressed: #F0F0F0;
+  --btn-secondary-default: #FCFCFC;
+  --btn-secondary-hover: #F7F7F7;
+  --btn-secondary-pressed: #F4F4F4;
+
+  /* BUTTON BORDERS */
+  --btn-border-default: #D0D0D0;
+  --btn-border-emphasis: #8A8A8A;
+  --btn-border-disabled: #E1E1E1;
+  --btn-border-success: #00D065;
+  --btn-border-warning: #FF153C;
+  --btn-border-attention: #FFB200;
+  --btn-border-neutral: #2F6BFF;
+
+  /* ICON COLORS */
+  --icon-default: #272727;
+  --icon-subtle: #565656;
+  --icon-inactive: #E1E1E1;
+  --icon-disabled: #8A8A8A;
+  --icon-on-dark: #FCFCFC;
+
+  /* SPACE */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+
+  /* RADIUS */
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-full: 9999px;
+
+  /* BORDER WIDTH */
+  --border-s: 0.5px;
+  --border-m: 1px;
+  --border-l: 2px;
+}
+   
+:root[data-theme="dark"] {
+
+  /* TEXT */
+  --text-regular: #F0F0F0;
+  --text-subtle: #A0A0A0;
+  --text-accent: #C1C1C9;
+  --text-disabled: #565656;
+  --text-on-dark: #FCFCFC;
+
+  /* BACKGROUND */
+  --bg-default: #1C1C1C;
+  --bg-elevated: #242424;
+  --bg-raised: #2A2A2A;
+  --bg-subtle: #303030;
+  --bg-muted: #3A3A3A;
+
+  /* BORDER */
+  --border-default: #3A3A3A;
+  --border-subtle: #2A2A2A;
+  --border-emphasis: #565656;
+
+  /* ICON */
+  --icon-default: #F0F0F0;
+  --icon-subtle: #A0A0A0;
+  --icon-disabled: #565656;
+
+}
+
+/* ============================================================
+   BASE RESET & TYPOGRAPHY
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-default);
+  color: var(--text-regular);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TYPOGRAPHY TOKENS */
+.heading-small   { font-size: 14px; line-height: 18px; font-weight: 500; }
+.body-medium-reg { font-size: 14px; line-height: 18px; font-weight: 400; }
+.body-medium-med { font-size: 14px; line-height: 18px; font-weight: 500; }
+.label-medium-reg{ font-size: 14px; line-height: 18px; font-weight: 400; }
+.label-small-reg { font-size: 12px; line-height: 14px; font-weight: 400; }
+.body-small-reg  { font-size: 12px; line-height: 14px; font-weight: 400; }
+.body-small-med  { font-size: 12px; line-height: 14px; font-weight: 500; }
+.label-xsmall-reg{ font-size: 11px; line-height: 14px; font-weight: 400; }
+.label-xsmall-med{ font-size: 11px; line-height: 14px; font-weight: 500; }
+.body-xsmall-reg { font-size: 11px; line-height: 14px; font-weight: 400; }
+.body-xsmall-med { font-size: 11px; line-height: 14px; font-weight: 500; }
+.label-xxsmall-med{ font-size: 9px; line-height: 12px; font-weight: 500; }
+
+/* ============================================================
+   DS DOCUMENT LAYOUT
+   ============================================================ */
+.ds-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-48);
+}
+
+.ds-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding-bottom: var(--space-32);
+  border-bottom: var(--border-s) solid var(--border-default);
+  margin-bottom: var(--space-48);
+}
+
+.ds-logo {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--text-regular);
+}
+
+.ds-logo span {
+  color: var(--text-subtle);
+  font-weight: 400;
+}
+
+.ds-version {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-subtle);
+  background: var(--bg-raised);
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+}
+
+/* SECTION STRUCTURE */
+.ds-section {
+  margin-bottom: var(--space-48);
+}
+
+.ds-section-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: var(--space-24);
+  padding-bottom: var(--space-8);
+  border-bottom: var(--border-s) solid var(--border-default);
+}
+
+.ds-subsection-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-accent);
+  margin-bottom: var(--space-16);
+  margin-top: var(--space-24);
+}
+
+.ds-frame {
+  background: var(--bg-default);
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-8);
+  padding: var(--space-24);
+  margin-bottom: var(--space-16);
+}
+
+.ds-frame-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-subtle);
+  margin-bottom: var(--space-16);
+}
+
+/* COMPONENT GRID */
+.ds-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  align-items: flex-start;
+}
+
+.ds-grid-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.ds-state-label {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   TYPOGRAPHY SHOWCASE
+   ============================================================ */
+.typo-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  gap: var(--space-24);
+  align-items: center;
+  padding: var(--space-12) 0;
+  border-bottom: var(--border-s) solid var(--border-subtle);
+}
+
+.typo-meta {
+  font-size: 11px;
+  color: var(--text-subtle);
+}
+
+.typo-usage {
+  font-size: 11px;
+  color: var(--text-disabled);
+}
+
+/* ============================================================
+   COLOR SWATCHES
+   ============================================================ */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-8);
+}
+
+.color-swatch {
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-8);
+  overflow: hidden;
+}
+
+.swatch-chip {
+  height: 48px;
+}
+
+.swatch-info {
+  padding: var(--space-8) var(--space-10);
+  background: var(--bg-default);
+}
+
+.swatch-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-regular);
+  display: block;
+}
+
+.swatch-hex {
+  font-size: 10px;
+  color: var(--text-subtle);
+  font-family: 'Courier New', monospace;
+  display: block;
+  margin-top: 2px;
+}
+
+.swatch-desc {
+  font-size: 10px;
+  color: var(--text-disabled);
+  display: block;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   SPACE & BORDER TOKENS
+   ============================================================ */
+.space-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-6) 0;
+  border-bottom: var(--border-s) solid var(--border-subtle);
+}
+
+.space-bar {
+  background: var(--feedback-neutral-surface);
+  border: var(--border-m) solid var(--feedback-neutral);
+  border-radius: 2px;
+  height: 16px;
+  min-width: 2px;
+  flex-shrink: 0;
+}
+
+.space-info {
+  display: flex;
+  gap: var(--space-8);
+  align-items: baseline;
+}
+
+.space-token { font-size: 12px; font-weight: 500; color: var(--text-regular); }
+.space-value { font-size: 11px; color: var(--text-subtle); }
+.space-usage { font-size: 11px; color: var(--text-disabled); }
+
+.radius-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-8) 0;
+  border-bottom: var(--border-s) solid var(--border-subtle);
+}
+
+.radius-demo {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-elevated);
+  border: var(--border-m) solid var(--border-default);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+/* Base button reset */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-style: solid;
+  border-width: var(--border-s);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background 0.1s ease, border-color 0.1s ease;
+  white-space: nowrap;
+  position: relative;
+  user-select: none;
+}
+
+/* LARGE PRIMARY */
+.btn-lg-primary {
+  height: 40px;
+  border-radius: var(--radius-6);
+  padding: var(--space-8) 14px var(--space-8) var(--space-12);
+  gap: var(--space-4);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--text-regular);
+  background: var(--btn-primary-default);
+  border-color: var(--btn-border-default);
+}
+
+.btn-lg-primary:hover { background: var(--btn-primary-hover); border-color: var(--btn-border-emphasis); }
+.btn-lg-primary:active { background: var(--btn-primary-pressed); border-color: var(--btn-border-emphasis); }
+.btn-lg-primary.disabled { border-color: var(--btn-border-disabled); color: var(--text-disabled); pointer-events: none; }
+
+/* LARGE SECONDARY */
+.btn-lg-secondary {
+  height: 40px;
+  border-radius: var(--radius-6);
+  padding: var(--space-8) 14px var(--space-8) var(--space-12);
+  gap: var(--space-4);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--text-regular);
+  background: var(--btn-secondary-default);
+  border-color: var(--btn-border-default);
+}
+
+.btn-lg-secondary:hover { background: var(--btn-secondary-hover); border-color: var(--btn-border-emphasis); }
+.btn-lg-secondary:active { background: var(--btn-secondary-pressed); border-color: var(--btn-border-emphasis); }
+.btn-lg-secondary.disabled { border-color: var(--btn-border-disabled); color: var(--text-disabled); pointer-events: none; }
+
+/* ============================================================
+   BUTTON SEMANTIC VARIANTS — CORRETO
+   Default = sempre border cinza
+   Hover / Active = border semântico
+   ============================================================ */
+
+/* DEFAULT — sempre neutro */
+
+.btn-system,
+.btn-success,
+.btn-attention,
+.btn-warning {
+  border-color: var(--btn-border-default);
+}
+
+/* HOVER / PRESSED */
+
+.btn-system:hover,
+.btn-system:active {
+  border-color: var(--btn-border-neutral) !important;
+}
+
+.btn-success:hover,
+.btn-success:active {
+  border-color: var(--btn-border-success) !important;
+}
+
+.btn-attention:hover,
+.btn-attention:active {
+  border-color: var(--btn-border-attention) !important;
+}
+
+.btn-warning:hover,
+.btn-warning:active {
+  border-color: var(--btn-border-warning) !important;
+}
+
+/* LARGE ICON-ONLY */
+.btn-lg-icon {
+  width: 40px;
+  height: 40px;
+
+  border-radius: var(--radius-6);
+
+  background: var(--btn-primary-default);
+
+  border: var(--border-s) solid var(--btn-border-default);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+.btn-lg-icon:hover { background: var(--btn-primary-hover); border-color: var(--btn-border-emphasis); }
+.btn-lg-icon:active { background: var(--btn-primary-pressed); }
+.btn-lg-icon.disabled { border-color: var(--btn-border-disabled); pointer-events: none; }
+
+.btn-lg-icon-sec {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-6);
+  background: var(--btn-secondary-default);
+  border-color: var(--btn-border-default);
+  padding: var(--space-8);
+}
+
+.btn-lg-icon-sec:hover { background: var(--btn-secondary-hover); border-color: var(--btn-border-emphasis); }
+
+/* SMALL BUTTONS */
+.btn-sm-primary {
+  height: 24px;
+  border-radius: var(--radius-6);
+  padding: var(--space-10) var(--space-6) var(--space-10) var(--space-4);
+  gap: var(--space-4);
+  font-size: 11px;
+  line-height: 14px;
+  color: var(--text-regular);
+  background: var(--btn-primary-default);
+  border-color: var(--btn-border-default);
+}
+
+.btn-sm-primary:hover { background: var(--btn-primary-hover); border-color: var(--btn-border-emphasis); }
+.btn-sm-primary.disabled { border-color: var(--btn-border-disabled); color: var(--text-disabled); pointer-events: none; }
+
+.btn-sm-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-6);
+  background: var(--btn-primary-default);
+  border-color: var(--btn-border-default);
+  padding: var(--space-4);
+}
+
+.btn-sm-icon:hover { background: var(--btn-primary-hover); }
+
+/* TERTIARY */
+.btn-tertiary {
+  height: 40px;
+  border-radius: var(--radius-6);
+  padding: var(--space-8) var(--space-12);
+  font-size: 12px;
+  color: var(--text-accent);
+  background: transparent;
+  border-color: transparent;
+}
+
+.btn-tertiary:hover { background: var(--bg-subtle); border-color: transparent; }
+.btn-tertiary:active { background: var(--bg-muted); }
+.btn-tertiary.disabled { color: var(--text-disabled); pointer-events: none; }
+
+/* NOTIFICATION BADGE */
+.btn-notif {
+  position: relative;
+}
+
+.btn-notif .notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--feedback-neutral);
+  color: white;
+  font-size: 9px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+}
+
+/* Material Icons sizing */
+.btn .material-icons-round { font-size: 16px; color: var(--icon-default); }
+.btn.disabled .material-icons-round { color: var(--icon-disabled); }
+.btn-lg-icon .material-icons-round { font-size: 18px; }
+.btn-lg-icon-sec .material-icons-round { font-size: 20px; }
+.btn-sm-icon .material-icons-round { font-size: 16px; }
+
+/* ============================================================
+   BADGE LABELS (entity badges)
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  border-style: solid;
+  border-width: var(--border-s);
+  border-color: var(--border-default);
+  background: var(--bg-elevated);
+  color: var(--text-regular);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+  user-select: none;
+}
+
+.badge-lg {
+  height: 34px;
+  border-radius: var(--radius-8);
+  padding: var(--space-8);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.badge-sm {
+  height: 26px;
+  border-radius: var(--radius-8);
+  padding: var(--space-6);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.badge:hover { background: var(--bg-raised); border-color: var(--border-emphasis); }
+.badge:active { background: var(--bg-subtle); border-color: var(--border-emphasis); }
+.badge.disabled { color: var(--text-disabled); pointer-events: none; }
+.badge.disabled .material-icons-round { color: var(--icon-disabled) !important; }
+
+.badge .material-icons-round { font-size: 16px; color: var(--icon-subtle); }
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.badge-dot-success { background: var(--feedback-success-icon); }
+.badge-dot-warning { background: var(--feedback-warning-icon); }
+.badge-dot-attention { background: var(--feedback-attention-icon); }
+.badge-dot-neutral { background: var(--feedback-neutral-icon); }
+
+/* ============================================================
+   STATUS LABELS (read-only chips)
+   ============================================================ */
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 22px;
+  border-radius: var(--radius-full);
+  padding: var(--space-4) 8px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.status-success {
+  background: var(--feedback-success-surface);
+  color: var(--feedback-success-text);
+}
+
+.status-warning {
+  background: var(--feedback-warning-surface);
+  color: var(--feedback-warning-text);
+}
+
+.status-attention {
+  background: var(--feedback-attention-surface);
+  color: var(--feedback-attention-text);
+}
+
+.status-neutral {
+  background: var(--bg-raised);
+  color: var(--text-subtle);
+}
+
+.status-disabled {
+  background: var(--bg-muted);
+  color: var(--text-disabled);
+}
+
+/* Status dot */
+.status-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Status icon badge */
+.status-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-6);
+  padding: var(--space-4);
+}
+
+.status-icon-badge.success { background: var(--feedback-success-surface); }
+.status-icon-badge.warning { background: var(--feedback-warning-surface); }
+.status-icon-badge.attention { background: var(--feedback-attention-surface); }
+.status-icon-badge.neutral { background: var(--feedback-neutral-surface); }
+.status-icon-badge.disabled { background: var(--feedback-inactive-surface); }
+
+.status-icon-badge .material-icons-round { font-size: 24px; }
+.status-icon-badge.success .material-icons-round { color: var(--feedback-success-icon-strong); }
+.status-icon-badge.warning .material-icons-round { color: var(--feedback-warning-icon-strong); }
+.status-icon-badge.attention .material-icons-round { color: var(--feedback-attention-icon-strong); }
+.status-icon-badge.neutral .material-icons-round { color: var(--feedback-neutral-icon-strong); }
+.status-icon-badge.disabled .material-icons-round { color: var(--feedback-inactive-icon); }
+
+/* ============================================================
+   FUEL STATUS
+   ============================================================ */
+.fuel-widget {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 180px;
+}
+
+.fuel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fuel-bar-track {
+  height: 10px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.fuel-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* States */
+.fuel-normal .fuel-bar-track { background: var(--feedback-success-surface); }
+.fuel-normal .fuel-bar-fill  { background: var(--feedback-success); }
+.fuel-low .fuel-bar-track    { background: var(--feedback-attention-surface); }
+.fuel-low .fuel-bar-fill     { background: var(--feedback-attention); }
+.fuel-critical .fuel-bar-track { background: var(--feedback-warning-surface); }
+.fuel-critical .fuel-bar-fill  { background: var(--feedback-warning); }
+
+/* ============================================================
+   SELECTION CONTROLS
+   ============================================================ */
+
+/* RADIO */
+.radio-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  cursor: pointer;
+  padding: var(--space-4);
+  user-select: none;
+}
+
+.radio-control {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: var(--border-m) solid var(--btn-border-default);
+  background: var(--bg-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.1s, border-color 0.1s;
+}
+
+.radio-control.checked {
+  border-color: var(--btn-border-neutral);
+}
+
+.radio-control.checked::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--feedback-neutral-icon);
+}
+
+.radio-wrap:hover .radio-control { background: var(--bg-subtle); }
+.radio-wrap:active .radio-control { background: var(--bg-muted); }
+.radio-wrap.disabled { pointer-events: none; }
+.radio-wrap.disabled .radio-control {
+  background: var(--bg-muted);
+  border-color: var(--border-subtle);
+}
+.radio-wrap.disabled .radio-control.checked::after { background: var(--text-disabled); }
+
+/* CHECKBOX */
+.checkbox-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  cursor: pointer;
+  padding: var(--space-2);
+  user-select: none;
+}
+
+.checkbox-control {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-4);
+  border: var(--border-m) solid var(--btn-border-default);
+  background: var(--btn-secondary-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.1s, border-color 0.1s;
+}
+
+.checkbox-control.checked {
+  border-color: var(--btn-border-success);
+}
+
+.checkbox-control.checked .material-icons-round {
+  font-size: 12px;
+  color: var(--feedback-success-icon);
+}
+
+.checkbox-wrap:hover .checkbox-control { background: var(--bg-subtle); border-color: var(--border-emphasis); }
+.checkbox-wrap:active .checkbox-control { background: var(--bg-muted); }
+.checkbox-wrap.disabled { pointer-events: none; }
+.checkbox-wrap.disabled .checkbox-control { background: var(--bg-muted); border-color: var(--border-subtle); }
+.checkbox-wrap.disabled .checkbox-control .material-icons-round { color: var(--icon-disabled); }
+
+/* ============================================================
+   TOGGLE
+   ============================================================ */
+
+.toggle-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* TRACK */
+
+.toggle-track {
+  width: 44px;
+  height: 24px;
+
+  border-radius: var(--radius-full);
+
+  padding: 3px;
+
+  display: flex;
+  align-items: center;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* THUMB */
+
+.toggle-thumb {
+  width: 18px;
+  height: 18px;
+
+  border-radius: var(--radius-full);
+
+  background: var(--bg-default);
+
+  transition: transform 0.2s ease;
+}
+
+/* =========================
+   ON
+   ========================= */
+
+.toggle-track.on {
+  background: var(--feedback-neutral);
+}
+
+.toggle-track.on .toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* =========================
+   OFF
+   ========================= */
+
+.toggle-track.off {
+  background: var(--bg-muted);
+  border: var(--border-s) solid var(--border-default);
+}
+
+/* =========================
+   DISABLED — STATE AGNOSTIC
+   ========================= */
+
+.toggle-wrap.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.toggle-wrap.disabled .toggle-track {
+  background: var(--feedback-inactive-surface);
+  border: var(--border-s) solid var(--border-subtle);
+}
+
+.toggle-wrap.disabled .toggle-thumb {
+  background: var(--feedback-inactive-icon);
+}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  height: 24px;
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+  color: var(--text-subtle);
+  transition: color 0.1s;
+}
+
+.breadcrumb-item:hover { color: var(--text-subtle); }
+.breadcrumb-item:active { color: var(--text-accent); }
+.breadcrumb-item.current { color: var(--text-regular); cursor: default; }
+
+.breadcrumb-sep {
+  font-size: 16px;
+  color: var(--icon-subtle);
+  line-height: 1;
+}
+
+/* ============================================================
+   FORM FIELDS
+   ============================================================ */
+.field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 200px;
+}
+
+.field-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-subtle);
+  line-height: 14px;
+}
+
+.field-input {
+  height: 42px;
+  border-radius: var(--radius-6);
+  border: var(--border-s) solid var(--border-default);
+  background: var(--bg-default);
+  padding: 12px var(--space-8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-regular);
+  outline: none;
+  transition: border-color 0.1s;
+  width: 100%;
+}
+
+.field-input::placeholder { color: var(--text-subtle); }
+.field-input:focus { border: var(--border-m) solid var(--feedback-neutral); }
+.field-input:disabled { color: var(--text-disabled); background: var(--bg-default); }
+
+.field-select-wrap {
+  position: relative;
+}
+
+.field-select-wrap .field-input {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 32px;
+}
+
+.field-select-wrap .select-arrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--icon-subtle);
+  font-size: 18px;
+}
+
+.field-date-wrap {
+  position: relative;
+}
+
+.field-date-wrap .field-input { padding-right: 32px; }
+
+.field-date-wrap .date-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--icon-subtle);
+  font-size: 18px;
+}
+
+/* FILTER */
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  height: 30px;
+  border-radius: var(--radius-6);
+  border: var(--border-s) solid var(--border-default);
+  background: var(--bg-elevated);
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-8);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-disabled);
+  cursor: pointer;
+  transition: border-color 0.1s, color 0.1s;
+}
+
+.filter-btn:hover { border-color: var(--feedback-neutral); color: var(--text-subtle); }
+.filter-btn .material-icons-round { font-size: 16px; color: var(--icon-subtle); }
+.filter-btn .filter-arrow { font-size: 18px; color: var(--icon-subtle); }
+.filter-btn.selected { color: var(--text-regular); }
+
+/* ============================================================
+   UPLOAD AREA
+   ============================================================ */
+.upload-area {
+  border: var(--border-m) dashed var(--border-default);
+  border-radius: var(--radius-6);
+  background: none;
+  padding: var(--space-24) var(--space-8) var(--space-32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-align: center;
+  min-width: 280px;
+}
+
+.upload-area:hover { border-color: var(--feedback-neutral); }
+
+.upload-area.uploaded {
+  border-style: solid;
+  border-color: var(--btn-border-neutral);
+  background: var(--feedback-neutral-surface);
+}
+
+.upload-text { font-size: 14px; color: var(--text-subtle); }
+.upload-text .upload-link { color: var(--feedback-neutral-text); }
+.upload-subtext { font-size: 12px; color: var(--text-subtle); }
+
+/* ============================================================
+   CALENDAR
+   ============================================================ */
+.calendar {
+  width: 264px;
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-8);
+  background: var(--bg-default);
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8);
+  height: 32px;
+}
+
+.calendar-nav-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-6);
+  border: var(--border-s) solid var(--border-default);
+  background: var(--btn-secondary-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.calendar-nav-btn .material-icons-round { font-size: 16px; color: var(--icon-subtle); }
+.calendar-title {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-regular);
+  cursor: pointer;
+}
+
+.calendar-title:hover { color: var(--feedback-neutral-text); }
+
+.calendar-grid {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 30px);
+  gap: 0;
+  justify-content: space-between;
+}
+
+.calendar-weekday {
+  width: 30px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-accent);
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 30px);
+  gap: 0;
+  justify-content: space-between;
+}
+
+.cal-day {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.cal-day:hover { background: var(--bg-subtle); }
+.cal-day.inactive { color: var(--text-disabled); pointer-events: none; }
+.cal-day.disabled { color: var(--text-disabled); pointer-events: none; }
+.cal-day.selected-initial {
+  background: var(--border-default);
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+  font-weight: 500;
+}
+.cal-day.selected-final {
+  background: var(--border-default);
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+  font-weight: 500;
+}
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 30px);
+  gap: 0;
+  justify-content: space-between;
+}
+.cal-day.today { font-weight: 600; color: var(--feedback-neutral-text); }
+
+.calendar-footer {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  border-top: var(--border-s) solid var(--border-subtle);
+}
+
+.calendar-footer .btn { flex: 1; justify-content: center; }
+
+/* Year/Month grid */
+.cal-year-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-8);
+}
+
+.cal-year-cell {
+  padding: var(--space-4) var(--space-8);
+  font-size: 12px;
+  color: var(--text-regular);
+  border-radius: var(--radius-6);
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.1s;
+  border: var(--border-s) solid transparent;
+}
+
+.cal-year-cell:hover { background: var(--bg-subtle); }
+.cal-year-cell.selected {
+  background: var(--feedback-neutral-surface);
+  border-color: var(--feedback-neutral);
+}
+.cal-year-cell.disabled { color: var(--text-disabled); pointer-events: none; }
+
+.cal-month-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-8);
+}
+
+.cal-month-cell {
+  padding: var(--space-6) var(--space-8);
+  font-size: 12px;
+  color: var(--text-regular);
+  border-radius: var(--radius-6);
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.1s;
+  border: var(--border-s) solid transparent;
+}
+
+.cal-month-cell:hover { background: var(--bg-subtle); }
+.cal-month-cell.selected {
+  background: var(--feedback-neutral-surface);
+  border-color: var(--feedback-neutral);
+}
+.cal-month-cell.disabled { color: var(--text-disabled); pointer-events: none; }
+
+/* ============================================================
+   LAYOUT PREVIEW
+   ============================================================ */
+.layout-preview {
+  display: flex;
+  height: 280px;
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-8);
+  overflow: hidden;
+  background: var(--bg-default);
+}
+
+.layout-sidebar {
+  background: var(--bg-elevated);
+  border-right: var(--border-s) solid var(--border-default);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-8) 0;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+.layout-sidebar.collapsed { width: 56px; }
+.layout-sidebar.expanded { width: 248px; }
+
+.layout-inner-menu {
+  width: 196px;
+  background: var(--bg-elevated);
+  border-right: var(--border-s) solid var(--border-default);
+  padding: var(--space-8);
+  flex-shrink: 0;
+}
+
+.layout-right-panel {
+  width: 200px;
+  background: var(--bg-default);
+  border-left: var(--border-s) solid var(--border-default);
+  padding: var(--space-8);
+  flex-shrink: 0;
+}
+
+.layout-main {
+  flex: 1;
+  padding: var(--space-24);
+  overflow: hidden;
+}
+
+.layout-header {
+  height: 48px;
+  background: var(--bg-default);
+  border-bottom: var(--border-s) solid var(--border-default);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-24);
+  flex-shrink: 0;
+}
+
+.layout-frame {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar-nav-item {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sidebar-nav-item:hover { background: var(--bg-raised); }
+.sidebar-nav-item .material-icons-round { font-size: 18px; color: var(--icon-subtle); }
+.sidebar-nav-item.active .material-icons-round { color: var(--icon-default); }
+
+.layout-mock-card {
+  height: 60px;
+  background: var(--bg-default);
+  border: var(--border-s) solid var(--border-default);
+  border-radius: var(--radius-8);
+  margin-bottom: var(--space-8);
+  padding: var(--space-12);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.mock-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-muted);
+  border-radius: var(--radius-8);
+  flex-shrink: 0;
+}
+
+.mock-line {
+  height: 8px;
+  background: var(--bg-muted);
+  border-radius: var(--radius-4);
+  flex: 1;
+}
+
+.mock-line-sm {
+  height: 6px;
+  width: 60%;
+  background: var(--bg-subtle);
+  border-radius: var(--radius-4);
+}
+
+/* ============================================================
+   ELEVATION SURFACES
+   ============================================================ */
+.elevation-card {
+  padding: var(--space-16);
+  border-radius: var(--radius-8);
+  border: var(--border-s) solid var(--border-default);
+  margin-bottom: var(--space-8);
+}
+
+.elevation-card .layer-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-subtle);
+  margin-bottom: var(--space-4);
+}
+
+.elevation-card .layer-desc {
+  font-size: 11px;
+  color: var(--text-disabled);
+}
+
+/* ============================================================
+   IDENTITY / AVATARS
+   ============================================================ */
+.avatar-circle {
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-square {
+  border-radius: var(--radius-8);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-placeholder {
+  background: var(--bg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-placeholder .material-icons-round { color: var(--icon-subtle); }
+
+.avatar-edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-s) solid var(--border-default);
+  cursor: pointer;
+}
+
+.avatar-edit-btn .material-icons-round { font-size: 12px; color: var(--icon-default); }
+
+.avatar-delete-btn {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 20px;
+  height: 20px;
+
+  background: var(--bg-elevated);
+
+  border: var(--border-s) solid var(--border-default);
+
+  border-radius: var(--radius-full);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.avatar-delete-btn .material-icons-round {
+  font-size: 16px;
+  color: var(--icon-default);
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-32) 0;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-32);
+}
+
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-24);
+}
+
+.four-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: var(--space-16);
+}
+
+.text-subtle { color: var(--text-subtle); }
+.text-disabled { color: var(--text-disabled); }
+
+/* DS Nav Tabs */
+.ds-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: var(--border-s) solid var(--border-default);
+  margin-bottom: var(--space-32);
+  overflow-x: auto;
+}
+
+.ds-tab {
+  padding: var(--space-10) var(--space-16);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-subtle);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.1s, border-color 0.1s;
+  white-space: nowrap;
+}
+
+.ds-tab:hover { color: var(--text-regular); }
+.ds-tab.active { color: var(--text-regular); border-bottom-color: var(--text-regular); font-weight: 500; }
+</style>
+
+<!-- PATCH: icon font + button + calendar fixes -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,200,0,0" rel="stylesheet">
+
+<style>
+
+/* Ensure icons render as icons, not text */
+.material-icons-round,
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 200,
+    'GRAD' 0,
+    'opsz' 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BUTTON DEFAULT — always neutral border */
+.btn {
+  border-color: var(--btn-border-default);
+}
+
+/* Semantic border only on hover / pressed */
+.btn-system:hover,
+.btn-system:active {
+  border-color: var(--btn-border-neutral) !important;
+}
+
+.btn-success:hover,
+.btn-success:active {
+  border-color: var(--btn-border-success) !important;
+}
+
+.btn-attention:hover,
+.btn-attention:active {
+  border-color: var(--btn-border-attention) !important;
+}
+
+.btn-warning:hover,
+.btn-warning:active {
+  border-color: var(--btn-border-warning) !important;
+}
+
+/* CALENDAR RANGE — continuous fill */
+.cal-day.selected-initial {
+  background: var(--border-default);
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+.cal-day.interval {
+  background: var(--feedback-inactive-surface);
+  border-radius: 0;
+  margin: 0;
+  position: relative;
+}
+
+.cal-day.selected-final {
+  background: var(--border-default);
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+</style>
+
 </head>
 <body>
 
-<!-- FULL DESIGN SYSTEM FILE -->
+<!-- ============================================================
+PATCH APPLIED
 
-<h1>Argo Design System</h1>
+Changes implemented respecting original layout:
 
-<p>Este arquivo agora é um arquivo HTML funcional para uso direto.</p>
+1) Material Symbols Rounded (weight 200, fill 0)
+2) Toggle dark/light via data-theme
+3) Tabs/menu basic interaction
+4) Calendar range continuous classes support
+5) Badge icon positioned to the right
+6) No layout, spacing, or typography changes
 
-<p>Substitua completamente o arquivo antigo por este.</p>
+============================================================ -->
 
-<!--
-NOTA:
-Este arquivo foi gerado como um contêiner utilizável.
-Se você colar seu código completo aqui, ele funcionará normalmente.
--->
+
+<div class="ds-page">
+
+  <!-- HEADER -->
+  <div class="ds-header">
+    <div class="ds-logo">Argo <span>Design System</span></div>
+    <div class="ds-version">playmoove · v1.0</div>
+  </div>
+
+  <!-- NAV TABS -->
+  <div class="ds-tabs">
+    <div class="ds-tab active">Typography</div>
+    <div class="ds-tab">Colors</div>
+    <div class="ds-tab">Space & Border</div>
+    <div class="ds-tab">Elevation</div>
+    <div class="ds-tab">Layout</div>
+    <div class="ds-tab">Buttons</div>
+    <div class="ds-tab">Badges</div>
+    <div class="ds-tab">Status</div>
+    <div class="ds-tab">Controls</div>
+    <div class="ds-tab">Navigation</div>
+    <div class="ds-tab">Form Fields</div>
+    <div class="ds-tab">Identity</div>
+    <div class="ds-tab">Calendar</div>
+  </div>
+
+  <!-- ======================================================
+       TYPOGRAPHY
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Typography</div>
+
+    <div class="ds-frame">
+      <div class="ds-grid" style="gap:0; flex-direction:column;">
+
+        <div class="typo-row">
+          <div class="typo-meta">Heading/Small · Medium · 14/18</div>
+          <div class="heading-small">Edit driver</div>
+          <div class="typo-usage">Drawers, edit modals, alert dialogs</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Body/Medium · Regular · 14/18</div>
+          <div class="body-medium-reg">Eleonora D'Arborea</div>
+          <div class="typo-usage">Names, dates, values</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Label/Medium · Regular · 14/18</div>
+          <div class="label-medium-reg">Reservations</div>
+          <div class="typo-usage">Primary navigation items</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Body/Medium · Medium · 14/18</div>
+          <div class="body-medium-med">Personal info / Eleonora D'Arborea</div>
+          <div class="typo-usage">Section titles, primary content</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Label/Small · Regular · 12/14</div>
+          <div class="label-small-reg">Approve driver</div>
+          <div class="typo-usage">Secondary navigation items</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Body/Small · Regular · 12/14</div>
+          <div class="body-small-reg">Lorem ipsum dolor sit amet</div>
+          <div class="typo-usage">Compact data in tables and cards</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Label/XSmall · Regular · 11/14</div>
+          <div class="label-xsmall-reg">Charged</div>
+          <div class="typo-usage">Inline status labels</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Body/Small · Medium · 12/14</div>
+          <div class="body-small-med">€ 132,55</div>
+          <div class="typo-usage">Totals, subtotals</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Label/XSmall · Medium · 11/14</div>
+          <div class="label-xsmall-med">DR 323</div>
+          <div class="typo-usage">Entity ID badges</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Body/XSmall · Regular · 11/14</div>
+          <div class="body-xsmall-reg">Full name</div>
+          <div class="typo-usage">Field label above a value</div>
+        </div>
+
+        <div class="typo-row">
+          <div class="typo-meta">Label/XXSmall · Medium · 9/12</div>
+          <div class="label-xxsmall-med">Verified</div>
+          <div class="typo-usage">Compact status badges</div>
+        </div>
+
+        <div class="typo-row" style="border:none;">
+          <div class="typo-meta">Body/XSmall · Medium · 11/14</div>
+          <div class="body-xsmall-med">ID Driver Status</div>
+          <div class="typo-usage">Column headers in tables</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       COLORS
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Colors</div>
+
+    <div class="ds-subsection-title">Text</div>
+    <div class="color-grid" style="grid-template-columns: repeat(5, 1fr);">
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#272727;"></div>
+        <div class="swatch-info"><span class="swatch-name">text/regular</span><span class="swatch-hex">#272727</span><span class="swatch-desc">Primary content</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#8A8A8A;"></div>
+        <div class="swatch-info"><span class="swatch-name">text/subtle</span><span class="swatch-hex">#8A8A8A</span><span class="swatch-desc">Labels, metadata</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#565656;"></div>
+        <div class="swatch-info"><span class="swatch-name">text/accent</span><span class="swatch-hex">#565656</span><span class="swatch-desc">Inactive breadcrumbs</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#C1C1C9;"></div>
+        <div class="swatch-info"><span class="swatch-name">text/disabled</span><span class="swatch-hex">#C1C1C9</span><span class="swatch-desc">Placeholders, disabled</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#F0F0F0; border-bottom: 0.5px solid #D0D0D0;"></div>
+        <div class="swatch-info"><span class="swatch-name">text/on-dark</span><span class="swatch-hex">#F0F0F0</span><span class="swatch-desc">On dark backgrounds</span></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection-title">Background</div>
+    <div class="color-grid" style="grid-template-columns: repeat(5, 1fr);">
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#FCFCFC; border-bottom: 0.5px solid #D0D0D0;"></div>
+        <div class="swatch-info"><span class="swatch-name">bg/default</span><span class="swatch-hex">#FCFCFC</span><span class="swatch-desc">Main application background</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#F7F7F7;"></div>
+        <div class="swatch-info"><span class="swatch-name">bg/elevated</span><span class="swatch-hex">#F7F7F7</span><span class="swatch-desc">Sidebars, panels</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#F4F4F4;"></div>
+        <div class="swatch-info"><span class="swatch-name">bg/raised</span><span class="swatch-hex">#F4F4F4</span><span class="swatch-desc">Table headers</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#F0F0F0;"></div>
+        <div class="swatch-info"><span class="swatch-name">bg/subtle</span><span class="swatch-hex">#F0F0F0</span><span class="swatch-desc">Hover, pressed states</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#E1E1E1;"></div>
+        <div class="swatch-info"><span class="swatch-name">bg/muted</span><span class="swatch-hex">#E1E1E1</span><span class="swatch-desc">Inactive toggle</span></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection-title">Border</div>
+    <div class="color-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#D0D0D0;"></div>
+        <div class="swatch-info"><span class="swatch-name">border/default</span><span class="swatch-hex">#D0D0D0</span><span class="swatch-desc">Cards, inputs, dividers · 0.5px</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#E1E1E1;"></div>
+        <div class="swatch-info"><span class="swatch-name">border/subtle</span><span class="swatch-hex">#E1E1E1</span><span class="swatch-desc">Internal dividers</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-chip" style="background:#8A8A8A;"></div>
+        <div class="swatch-info"><span class="swatch-name">border/emphasis</span><span class="swatch-hex">#8A8A8A</span><span class="swatch-desc">Focused input state</span></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection-title">Feedback</div>
+    <div class="four-col">
+      <!-- SUCCESS -->
+      <div>
+        <div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Success</div>
+        <div class="color-grid" style="grid-template-columns:1fr;">
+          <div class="color-swatch"><div class="swatch-chip" style="background:#00D065;"></div><div class="swatch-info"><span class="swatch-name">feedback/success</span><span class="swatch-hex">#00D065</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#E6FAF2;"></div><div class="swatch-info"><span class="swatch-name">success surface</span><span class="swatch-hex">#E6FAF2</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#1D8644;"></div><div class="swatch-info"><span class="swatch-name">success text</span><span class="swatch-hex">#1D8644</span></div></div>
+        </div>
+      </div>
+      <!-- ATTENTION -->
+      <div>
+        <div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Attention</div>
+        <div class="color-grid" style="grid-template-columns:1fr;">
+          <div class="color-swatch"><div class="swatch-chip" style="background:#FFB200;"></div><div class="swatch-info"><span class="swatch-name">feedback/attention</span><span class="swatch-hex">#FFB200</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#FFF8E6;"></div><div class="swatch-info"><span class="swatch-name">attention surface</span><span class="swatch-hex">#FFF8E6</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#A37315;"></div><div class="swatch-info"><span class="swatch-name">attention text</span><span class="swatch-hex">#A37315</span></div></div>
+        </div>
+      </div>
+      <!-- WARNING -->
+      <div>
+        <div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Warning</div>
+        <div class="color-grid" style="grid-template-columns:1fr;">
+          <div class="color-swatch"><div class="swatch-chip" style="background:#FF153C;"></div><div class="swatch-info"><span class="swatch-name">feedback/warning</span><span class="swatch-hex">#FF153C</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#FFE6E9;"></div><div class="swatch-info"><span class="swatch-name">warning surface</span><span class="swatch-hex">#FFE6E9</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#A4202A;"></div><div class="swatch-info"><span class="swatch-name">warning text</span><span class="swatch-hex">#A4202A</span></div></div>
+        </div>
+      </div>
+      <!-- NEUTRAL -->
+      <div>
+        <div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Neutral</div>
+        <div class="color-grid" style="grid-template-columns:1fr;">
+          <div class="color-swatch"><div class="swatch-chip" style="background:#2F6BFF;"></div><div class="swatch-info"><span class="swatch-name">feedback/neutral</span><span class="swatch-hex">#2F6BFF</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#EBF8FF;"></div><div class="swatch-info"><span class="swatch-name">neutral surface</span><span class="swatch-hex">#EBF8FF</span></div></div>
+          <div class="color-swatch"><div class="swatch-chip" style="background:#1F3FA8;"></div><div class="swatch-info"><span class="swatch-name">neutral text</span><span class="swatch-hex">#1F3FA8</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       SPACE & BORDER
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Space & Border</div>
+    <div class="two-col">
+
+      <div>
+        <div class="ds-subsection-title">Spacing Scale</div>
+        <div class="ds-frame">
+          <div class="space-row"><div class="space-bar" style="width:2px;"></div><div class="space-info"><span class="space-token">space/2</span><span class="space-value">2px</span><span class="space-usage">Micro gap, badge padding</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:4px;"></div><div class="space-info"><span class="space-token">space/4</span><span class="space-value">4px</span><span class="space-usage">Tight gap between elements</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:6px;"></div><div class="space-info"><span class="space-token">space/6</span><span class="space-value">6px</span><span class="space-usage">Small compact spacing</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:8px;"></div><div class="space-info"><span class="space-token">space/8</span><span class="space-value">8px</span><span class="space-usage">Default gap between fields</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:10px;"></div><div class="space-info"><span class="space-token">space/10</span><span class="space-value">10px</span><span class="space-usage">Tab bar, breadcrumb</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:12px;"></div><div class="space-info"><span class="space-token">space/12</span><span class="space-value">12px</span><span class="space-usage">Label to value</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:16px;"></div><div class="space-info"><span class="space-token">space/16</span><span class="space-value">16px</span><span class="space-usage">Between sections in card</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:24px;"></div><div class="space-info"><span class="space-token">space/24</span><span class="space-value">24px</span><span class="space-usage">Card padding, between cards</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:32px;"></div><div class="space-info"><span class="space-token">space/32</span><span class="space-value">32px</span><span class="space-usage">Major layout sections</span></div></div>
+          <div class="space-row"><div class="space-bar" style="width:40px;"></div><div class="space-info"><span class="space-token">space/40</span><span class="space-value">40px</span><span class="space-usage">Page section gap</span></div></div>
+          <div class="space-row" style="border:none;"><div class="space-bar" style="width:48px;"></div><div class="space-info"><span class="space-token">space/48</span><span class="space-value">48px</span><span class="space-usage">Frame outer padding</span></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ds-subsection-title">Border Radius</div>
+        <div class="ds-frame">
+          <div class="radius-row"><div class="radius-demo" style="border-radius:4px;"></div><div class="space-info"><span class="space-token">radius/4</span><span class="space-value">4px</span><span class="space-usage">Badges, chips</span></div></div>
+          <div class="radius-row"><div class="radius-demo" style="border-radius:6px;"></div><div class="space-info"><span class="space-token">radius/6</span><span class="space-value">6px</span><span class="space-usage">Inputs, small buttons</span></div></div>
+          <div class="radius-row"><div class="radius-demo" style="border-radius:8px;"></div><div class="space-info"><span class="space-token">radius/8</span><span class="space-value">8px</span><span class="space-usage">Cards, panels, modals</span></div></div>
+          <div class="radius-row"><div class="radius-demo" style="border-radius:12px;"></div><div class="space-info"><span class="space-token">radius/12</span><span class="space-value">12px</span><span class="space-usage">Drawer containers</span></div></div>
+          <div class="radius-row"><div class="radius-demo" style="border-radius:16px;"></div><div class="space-info"><span class="space-token">radius/16</span><span class="space-value">16px</span><span class="space-usage">Large overlays</span></div></div>
+          <div class="radius-row" style="border:none;"><div class="radius-demo" style="border-radius:9999px;"></div><div class="space-info"><span class="space-token">radius/full</span><span class="space-value">9999px</span><span class="space-usage">Pills, toggles, avatars</span></div></div>
+        </div>
+
+        <div class="ds-subsection-title">Border Width</div>
+        <div class="ds-frame">
+          <div class="space-row"><div style="width:40px;height:24px;border:0.5px solid var(--border-default);border-radius:4px;flex-shrink:0;"></div><div class="space-info"><span class="space-token">border/s</span><span class="space-value">0.5px</span><span class="space-usage">Default — 95% of cases</span></div></div>
+          <div class="space-row"><div style="width:40px;height:24px;border:1px solid var(--border-emphasis);border-radius:4px;flex-shrink:0;"></div><div class="space-info"><span class="space-token">border/m</span><span class="space-value">1px</span><span class="space-usage">Hover, focus states</span></div></div>
+          <div class="space-row" style="border:none;"><div style="width:40px;height:24px;border:2px solid var(--text-regular);border-radius:4px;flex-shrink:0;"></div><div class="space-info"><span class="space-token">border/l</span><span class="space-value">2px</span><span class="space-usage">Selected state emphasis</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       ELEVATION & SURFACES
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Elevation & Surfaces</div>
+    <div class="two-col">
+      <div>
+        <div class="ds-subsection-title">Surface Layers</div>
+        <div class="elevation-card" style="background:#FCFCFC;"><div class="layer-label">Base — Page background</div><div class="layer-desc">bg/default #FCFCFC — All pages sit on this surface</div></div>
+        <div class="elevation-card" style="background:#F7F7F7;"><div class="layer-label">Layer 1 — Sidebar & panels</div><div class="layer-desc">bg/elevated #F7F7F7 — Separation from content</div></div>
+        <div class="elevation-card" style="background:#F4F4F4;"><div class="layer-label">Layer 2 — Table header rows</div><div class="layer-desc">bg/raised #F4F4F4 — Distinguishes header from data rows</div></div>
+        <div class="elevation-card" style="background:#FCFCFC;"><div class="layer-label">Layer 3 — Cards & sections</div><div class="layer-desc">bg/default #FCFCFC — Separated by border/default 0.5px</div></div>
+        <div class="elevation-card" style="background:#FCFCFC;"><div class="layer-label">Layer 4 — Dropdowns & drawers</div><div class="layer-desc">bg/default #FCFCFC — Separated by border/default 0.5px</div></div>
+        <div class="elevation-card" style="background:#FCFCFC;"><div class="layer-label">Layer 5 — Modals & overlays</div><div class="layer-desc">bg/default #FCFCFC — Semi-transparent black scrim</div></div>
+      </div>
+      <div>
+        <div class="ds-subsection-title">Stacking Rule</div>
+        <div class="ds-frame">
+          <p style="font-size:12px;color:var(--text-subtle);line-height:1.6;">All floating elements — drawers, modals, dropdowns, context menus — use <strong style="color:var(--text-regular);">bg/default (#FCFCFC)</strong>, the same token as the page background.</p>
+          <br>
+          <p style="font-size:12px;color:var(--text-subtle);line-height:1.6;">They are differentiated from the page not by background color but by <strong style="color:var(--text-regular);">border (border/default, 0.5px)</strong> and by their position above the content.</p>
+          <br>
+          <p style="font-size:12px;color:var(--text-subtle);line-height:1.6;"><strong style="color:var(--text-regular);">No shadow system</strong> — elevation is communicated through border and layering only.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       LAYOUT
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Layout & Grid</div>
+
+    <div class="three-col" style="margin-bottom:var(--space-24);">
+
+      <!-- Default page -->
+      <div>
+        <div class="ds-frame-label">Default page — sidebar 56px</div>
+        <div class="layout-preview">
+          <div class="layout-frame">
+            <div class="layout-header">
+              <span style="font-size:11px;color:var(--text-subtle);">Header — 48px</span>
+            </div>
+            <div style="display:flex;flex:1;overflow:hidden;">
+              <div class="layout-sidebar collapsed">
+                <div class="sidebar-nav-item active"><span class="material-icons-round">dashboard</span></div>
+                <div class="sidebar-nav-item"><span class="material-icons-round">receipt_long</span></div>
+                <div class="sidebar-nav-item"><span class="material-icons-round">directions_car</span></div>
+                <div class="sidebar-nav-item"><span class="material-icons-round">person</span></div>
+                <div class="sidebar-nav-item"><span class="material-icons-round">payments</span></div>
+                <div class="sidebar-nav-item"><span class="material-icons-round">settings</span></div>
+              </div>
+              <div class="layout-main">
+                <div class="layout-mock-card"><div class="mock-avatar"></div><div><div class="mock-line" style="width:120px;"></div><div class="mock-line-sm" style="margin-top:6px;"></div></div></div>
+                <div class="layout-mock-card"><div class="mock-avatar"></div><div><div class="mock-line" style="width:100px;"></div><div class="mock-line-sm" style="margin-top:6px;"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- With inner menu -->
+      <div>
+        <div class="ds-frame-label">With inner menu — sidebar 56px + 196px</div>
+        <div class="layout-preview">
+          <div class="layout-frame">
+            <div class="layout-header">
+              <span style="font-size:11px;color:var(--text-subtle);">Header — 48px</span>
+            </div>
+            <div style="display:flex;flex:1;overflow:hidden;">
+              <div class="layout-sidebar collapsed">
+                <div class="sidebar-nav-item"><span class="material-icons-round">dashboard</span></div>
+                <div class="sidebar-nav-item active"><span class="material-icons-round">person</span></div>
+                <div class="sidebar-nav-item"><span class="material-icons-round">directions_car</span></div>
+              </div>
+              <div class="layout-inner-menu">
+                <div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Drivers</div>
+                <div style="font-size:12px;color:var(--text-regular);padding:4px 0;">All drivers</div>
+                <div style="font-size:12px;color:var(--text-subtle);padding:4px 0;">Approve driver</div>
+                <div style="font-size:12px;color:var(--text-subtle);padding:4px 0;">Suspended</div>
+              </div>
+              <div class="layout-main">
+                <div class="layout-mock-card"><div class="mock-avatar"></div><div><div class="mock-line" style="width:90px;"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Root navigation -->
+      <div>
+        <div class="ds-frame-label">Root navigation — sidebar 248px</div>
+        <div class="layout-preview">
+          <div class="layout-frame">
+            <div class="layout-header">
+              <span style="font-size:11px;color:var(--text-subtle);">Header — 48px</span>
+            </div>
+            <div style="display:flex;flex:1;overflow:hidden;">
+              <div class="layout-sidebar expanded" style="align-items:flex-start;padding:8px;">
+                <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;width:100%;background:var(--bg-raised);cursor:pointer;"><span class="material-icons-round" style="font-size:16px;color:var(--icon-default);">dashboard</span><span style="font-size:12px;color:var(--text-regular);">Dashboard</span></div>
+                <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;width:100%;cursor:pointer;"><span class="material-icons-round" style="font-size:16px;color:var(--icon-subtle);">receipt_long</span><span style="font-size:12px;color:var(--text-subtle);">Reservations</span></div>
+                <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;width:100%;cursor:pointer;"><span class="material-icons-round" style="font-size:16px;color:var(--icon-subtle);">person</span><span style="font-size:12px;color:var(--text-subtle);">Drivers</span></div>
+                <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;width:100%;cursor:pointer;"><span class="material-icons-round" style="font-size:16px;color:var(--icon-subtle);">how_to_reg</span><span style="font-size:12px;color:var(--text-subtle);">Approvals</span></div>
+              </div>
+              <div class="layout-main">
+                <div class="layout-mock-card"><div><div class="mock-line" style="width:120px;"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ds-frame">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-16);">
+        <div><div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Fixed Dimensions</div>
+          <div style="font-size:12px;color:var(--text-regular);line-height:2;">Sidebar hidden: 56px<br>Sidebar open: 248px<br>Header: 48px<br>Inner menu: 196px<br>Right panel: 200px</div></div>
+        <div><div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Content Area</div>
+          <div style="font-size:12px;color:var(--text-regular);line-height:2;">Internal padding: 24px all sides<br>Content: flex fills space<br>Min frame: 1024px</div></div>
+        <div><div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Cards & Sections</div>
+          <div style="font-size:12px;color:var(--text-regular);line-height:2;">Card padding: 24px all sides<br>Gap between cards: 16px<br>Gap between sections: 24px</div></div>
+        <div><div style="font-size:11px;font-weight:500;color:var(--text-subtle);margin-bottom:8px;">Sidebar Behavior</div>
+          <div style="font-size:12px;color:var(--text-regular);line-height:2;">Auto-collapse on navigate<br>Root level stays at 248px<br>Manual toggle available</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       BUTTONS
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Buttons</div>
+
+    <!-- Large Primary -->
+    <div class="ds-subsection-title">Large · Primary · Icon+Label</div>
+    <div class="ds-frame">
+      <div class="ds-grid">
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Default</div>
+          <button class="btn btn-lg-primary"><span class="material-icons-round">edit_note</span> Label</button>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Hover</div>
+          <button class="btn btn-lg-primary" style="background:var(--btn-primary-hover);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">edit_note</span> Label</button>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Pressed</div>
+          <button class="btn btn-lg-primary" style="background:var(--btn-primary-pressed);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">edit_note</span> Label</button>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Disabled</div>
+          <button class="btn btn-lg-primary disabled"><span class="material-icons-round">edit_note</span> Label</button>
+        </div>
+
+        <div style="width:1px;background:var(--border-subtle);margin:0 8px;"></div>
+
+        <div class="ds-grid-col">
+          <div class="ds-state-label">System</div>
+          <button class="btn btn-lg-primary btn-system" style="border-color:var(--btn-border-neutral);"><span class="material-icons-round">edit_note</span> Label</button>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Success</div>
+          <button class="btn btn-lg-primary btn-success"><span class="material-icons-round">check</span> Label</button>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Attention</div>
+          <button class="btn btn-lg-primary btn-attention" style="border-color:var(--btn-border-attention);"><span class="material-icons-round">pending_actions</span> Label</button>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Warning</div>
+          <button class="btn btn-lg-primary btn-warning" style="border-color:var(--btn-border-warning);"><span class="material-icons-round">delete</span> Label</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large Secondary -->
+    <div class="ds-subsection-title">Large · Secondary · Icon+Label</div>
+    <div class="ds-frame">
+      <div class="ds-grid">
+        <div class="ds-grid-col"><div class="ds-state-label">Default</div><button class="btn btn-lg-secondary"><span class="material-icons-round">filter_alt</span> Label</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Hover</div><button class="btn btn-lg-secondary" style="background:var(--btn-secondary-hover);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">filter_alt</span> Label</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Pressed</div><button class="btn btn-lg-secondary" style="background:var(--btn-secondary-pressed);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">filter_alt</span> Label</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Disabled</div><button class="btn btn-lg-secondary disabled"><span class="material-icons-round">filter_alt</span> Label</button></div>
+        <div style="width:1px;background:var(--border-subtle);margin:0 8px;"></div>
+        <div class="ds-grid-col"><div class="ds-state-label">System</div><button class="btn btn-lg-secondary" style="border-color:var(--btn-border-neutral);"><span class="material-icons-round">search</span> Label</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Success</div><button class="btn btn-lg-secondary" style="border-color:var(--btn-border-success);"><span class="material-icons-round">check</span> Label</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Attention</div><button class="btn btn-lg-secondary" style="border-color:var(--btn-border-attention);"><span class="material-icons-round">pending_actions</span> Label</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Warning</div><button class="btn btn-lg-secondary" style="border-color:var(--btn-border-warning);"><span class="material-icons-round">delete</span> Label</button></div>
+      </div>
+    </div>
+
+    <!-- Tertiary -->
+    <div class="ds-subsection-title">Large · Tertiary · Label</div>
+    <div class="ds-frame">
+      <div class="ds-grid">
+        <div class="ds-grid-col"><div class="ds-state-label">Default</div><button class="btn btn-tertiary">Cancel</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Hover</div><button class="btn btn-tertiary" style="background:var(--bg-subtle);">Cancel</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Pressed</div><button class="btn btn-tertiary" style="background:var(--bg-muted);">Cancel</button></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Disabled</div><button class="btn btn-tertiary disabled">Cancel</button></div>
+      </div>
+    </div>
+
+    <!-- Icon-only & Small -->
+    <div class="two-col">
+      <div>
+        <div class="ds-subsection-title">Large · Icon Only</div>
+        <div class="ds-frame">
+          <div class="ds-grid" style="align-items:center;">
+            <div class="ds-grid-col"><div class="ds-state-label">Default</div><button class="btn btn-lg-icon"><span class="material-icons-round">more_vert</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Hover</div><button class="btn btn-lg-icon" style="background:var(--btn-primary-hover);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">more_vert</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Pressed</div><button class="btn btn-lg-icon" style="background:var(--btn-primary-pressed);"><span class="material-icons-round">more_vert</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Disabled</div><button class="btn btn-lg-icon disabled"><span class="material-icons-round">more_vert</span></button></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ds-subsection-title">Small · Icon Only</div>
+        <div class="ds-frame">
+          <div class="ds-grid" style="align-items:center;">
+            <div class="ds-grid-col"><div class="ds-state-label">Default</div><button class="btn btn-sm-icon"><span class="material-icons-round">edit_note</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Hover</div><button class="btn btn-sm-icon" style="background:var(--btn-primary-hover);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">edit_note</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Pressed</div><button class="btn btn-sm-icon" style="background:var(--btn-primary-pressed);"><span class="material-icons-round">edit_note</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Disabled</div><button class="btn btn-sm-icon disabled"><span class="material-icons-round">edit_note</span></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small + Notifications -->
+    <div class="two-col">
+      <div>
+        <div class="ds-subsection-title">Small · Primary · Icon+Label</div>
+        <div class="ds-frame">
+          <div class="ds-grid">
+            <div class="ds-grid-col"><div class="ds-state-label">Default</div><button class="btn btn-sm-primary"><span class="material-icons-round">add</span> Label</button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Hover</div><button class="btn btn-sm-primary" style="background:var(--btn-primary-hover);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">add</span> Label</button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Pressed</div><button class="btn btn-sm-primary" style="background:var(--btn-primary-pressed);"><span class="material-icons-round">add</span> Label</button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Disabled</div><button class="btn btn-sm-primary disabled"><span class="material-icons-round">add</span> Label</button></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ds-subsection-title">Large · Primary · Notifications</div>
+        <div class="ds-frame">
+          <div class="ds-grid" style="align-items:center;">
+            <div class="ds-grid-col"><div class="ds-state-label">Default</div><button class="btn btn-lg-primary btn-notif"><span class="material-icons-round">live_help</span> Notes<span class="notif-badge">8</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Hover</div><button class="btn btn-lg-primary btn-notif" style="background:var(--btn-primary-hover);border-color:var(--btn-border-emphasis);"><span class="material-icons-round">live_help</span> Notes<span class="notif-badge">8</span></button></div>
+            <div class="ds-grid-col"><div class="ds-state-label">Disabled</div><button class="btn btn-lg-primary btn-notif disabled"><span class="material-icons-round">live_help</span> Notes<span class="notif-badge" style="background:var(--text-disabled);">8</span></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       BADGES (entity badges)
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Badge Labels</div>
+
+    <div class="ds-subsection-title">Large Badges</div>
+    <div class="ds-frame">
+      <div class="ds-grid">
+        <!-- None -->
+        <div class="ds-grid-col">
+          <div class="ds-state-label">None · Default</div>
+          <div class="badge badge-lg">Label</div>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">None · Hover</div>
+          <div class="badge badge-lg" style="background:var(--bg-raised);border-color:var(--border-emphasis);">Label</div>
+        </div>
+        <div class="ds-grid-col">
+          <div class="ds-state-label">None · Disabled</div>
+          <div class="badge badge-lg disabled">Label</div>
+        </div>
+
+        <div style="width:1px;background:var(--border-subtle);margin:0 8px;"></div>
+
+        <!-- Icon -->
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Icon · Default</div>
+          <div class="badge badge-lg"><span class="material-icons-round">directions_car</span>Label</div>
+        </div>
+
+        <!-- Success -->
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Success</div>
+          <div class="badge badge-lg"><div class="badge-dot badge-dot-success"></div>Label</div>
+        </div>
+
+        <!-- Warning -->
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Warning</div>
+          <div class="badge badge-lg"><div class="badge-dot badge-dot-warning"></div>Label</div>
+        </div>
+
+        <!-- Attention -->
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Attention</div>
+          <div class="badge badge-lg"><div class="badge-dot badge-dot-attention"></div>Label</div>
+        </div>
+
+        <!-- Neutral -->
+        <div class="ds-grid-col">
+          <div class="ds-state-label">Neutral</div>
+          <div class="badge badge-lg"><div class="badge-dot badge-dot-neutral"></div>Label</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection-title">Small Badges</div>
+    <div class="ds-frame">
+      <div class="ds-grid" style="align-items:center;">
+        <div class="ds-grid-col"><div class="ds-state-label">None</div><div class="badge badge-sm">LABEL</div></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Icon</div><div class="badge badge-sm"><span class="material-icons-round">person</span>LABEL</div></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Success</div><div class="badge badge-sm"><div class="badge-dot badge-dot-success"></div>LABEL</div></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Warning</div><div class="badge badge-sm"><div class="badge-dot badge-dot-warning"></div>LABEL</div></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Attention</div><div class="badge badge-sm"><div class="badge-dot badge-dot-attention"></div>LABEL</div></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Neutral</div><div class="badge badge-sm"><div class="badge-dot badge-dot-neutral"></div>LABEL</div></div>
+        <div class="ds-grid-col"><div class="ds-state-label">Disabled</div><div class="badge badge-sm disabled">LABEL</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       STATUS LABELS
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Status</div>
+
+    <div class="three-col">
+      <div>
+        <div class="ds-subsection-title">Status Label (text only)</div>
+        <div class="ds-frame">
+          <div class="ds-grid" style="flex-direction:column;align-items:flex-start;">
+            <div class="status-label status-success">Confirmed</div>
+            <div class="status-label status-warning">Refused</div>
+            <div class="status-label status-attention">On Hold</div>
+            <div class="status-label status-neutral">In Progress</div>
+            <div class="status-label status-disabled">Inactive</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ds-subsection-title">Status Label Dot</div>
+        <div class="ds-frame">
+          <div class="ds-grid" style="flex-direction:column;align-items:flex-start;">
+            <div class="status-label status-success"><div class="status-dot" style="background:var(--feedback-success);"></div>Confirmed</div>
+            <div class="status-label status-warning"><div class="status-dot" style="background:var(--feedback-warning);"></div>Refused</div>
+            <div class="status-label status-attention"><div class="status-dot" style="background:var(--feedback-attention);"></div>Pending</div>
+            <div class="status-label" style="background:var(--feedback-neutral-surface);color:var(--text-subtle);"><div class="status-dot" style="background:var(--feedback-neutral);"></div>Active</div>
+            <div class="status-label status-disabled"><div class="status-dot" style="background:var(--feedback-inactive);"></div>Inactive</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ds-subsection-title">Status Icon Badge</div>
+        <div class="ds-frame">
+          <div class="ds-grid" style="flex-wrap:wrap;gap:8px;">
+            <div class="status-icon-badge success"><span class="material-icons-round">check_circle</span></div>
+            <div class="status-icon-badge warning"><span class="material-icons-round">cancel</span></div>
+            <div class="status-icon-badge attention"><span class="material-icons-round">error</span></div>
+            <div class="status-icon-badge neutral"><span class="material-icons-round">pending_actions</span></div>
+            <div class="status-icon-badge disabled"><span class="material-icons-round">block</span></div>
+          </div>
+        </div>
+
+        <div class="ds-subsection-title">Fuel Status</div>
+        <div class="ds-frame">
+          <div class="ds-grid" style="flex-direction:column;gap:16px;">
+            <div class="fuel-widget fuel-normal">
+              <div class="fuel-header">
+                <div style="display:flex;align-items:center;gap:4px;"><span class="material-icons-round" style="font-size:18px;color:var(--icon-subtle);">local_gas_station</span><span class="body-xsmall-reg text-subtle">Fuel</span></div>
+                <span class="body-small-med">75%</span>
+              </div>
+              <div class="fuel-bar-track"><div class="fuel-bar-fill" style="width:75%;"></div></div>
+            </div>
+            <div class="fuel-widget fuel-low">
+              <div class="fuel-header">
+                <div style="display:flex;align-items:center;gap:4px;"><span class="material-icons-round" style="font-size:18px;color:var(--icon-subtle);">local_gas_station</span><span class="body-xsmall-reg text-subtle">Fuel</span></div>
+                <span class="body-small-med">35%</span>
+              </div>
+              <div class="fuel-bar-track"><div class="fuel-bar-fill" style="width:35%;"></div></div>
+            </div>
+            <div class="fuel-widget fuel-critical">
+              <div class="fuel-header">
+                <div style="display:flex;align-items:center;gap:4px;"><span class="material-icons-round" style="font-size:18px;color:var(--icon-subtle);">local_gas_station</span><span class="body-xsmall-reg text-subtle">Fuel</span></div>
+                <span class="body-small-med">10%</span>
+              </div>
+              <div class="fuel-bar-track"><div class="fuel-bar-fill" style="width:10%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       SELECTION CONTROLS
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Selection Controls</div>
+    <div class="three-col">
+
+      <!-- RADIO -->
+      <div>
+        <div class="ds-subsection-title">Radio</div>
+        <div class="ds-frame">
+          <div style="margin-bottom:12px;"><div class="ds-frame-label" style="margin-bottom:8px;">Checked</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label class="radio-wrap"><div class="radio-control checked"></div><span class="body-medium-reg">Label</span></label>
+              <label class="radio-wrap"><div class="radio-control checked" style="background:var(--bg-subtle);"></div><span class="body-medium-reg">Hover</span></label>
+              <label class="radio-wrap"><div class="radio-control checked" style="background:var(--bg-muted);"></div><span class="body-medium-reg">Pressed</span></label>
+              <label class="radio-wrap disabled"><div class="radio-control" style="background:var(--bg-muted);border-color:var(--border-subtle);"><div style="width:6px;height:6px;border-radius:50%;background:var(--text-disabled);"></div></div><span class="body-medium-reg text-disabled">Disabled</span></label>
+            </div>
+          </div>
+          <div><div class="ds-frame-label" style="margin-bottom:8px;">Unchecked</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label class="radio-wrap"><div class="radio-control"></div><span class="body-medium-reg">Label</span></label>
+              <label class="radio-wrap"><div class="radio-control" style="background:var(--bg-subtle);border-color:var(--border-emphasis);"></div><span class="body-medium-reg">Hover</span></label>
+              <label class="radio-wrap disabled"><div class="radio-control" style="background:var(--bg-muted);border-color:var(--border-subtle);"></div><span class="body-medium-reg text-disabled">Disabled</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHECKBOX -->
+      <div>
+        <div class="ds-subsection-title">Checkbox</div>
+        <div class="ds-frame">
+          <div style="margin-bottom:12px;"><div class="ds-frame-label" style="margin-bottom:8px;">Checked</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label class="checkbox-wrap"><div class="checkbox-control checked"><span class="material-icons-round">check</span></div><span class="body-medium-reg">Label</span></label>
+              <label class="checkbox-wrap"><div class="checkbox-control checked" style="background:var(--bg-subtle);border-color:var(--border-emphasis);"><span class="material-icons-round">check</span></div><span class="body-medium-reg">Hover</span></label>
+              <label class="checkbox-wrap"><div class="checkbox-control checked" style="background:var(--bg-muted);border-color:var(--border-emphasis);"><span class="material-icons-round">check</span></div><span class="body-medium-reg">Pressed</span></label>
+              <label class="checkbox-wrap disabled"><div class="checkbox-control checked" style="background:var(--bg-muted);border-color:var(--border-subtle);"><span class="material-icons-round" style="color:var(--icon-disabled);">check</span></div><span class="body-medium-reg text-disabled">Disabled</span></label>
+            </div>
+          </div>
+          <div><div class="ds-frame-label" style="margin-bottom:8px;">Unchecked</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label class="checkbox-wrap"><div class="checkbox-control"></div><span class="body-medium-reg">Label</span></label>
+              <label class="checkbox-wrap"><div class="checkbox-control" style="background:var(--bg-subtle);border-color:var(--border-emphasis);"></div><span class="body-medium-reg">Hover</span></label>
+              <label class="checkbox-wrap disabled"><div class="checkbox-control" style="background:var(--bg-muted);border-color:var(--border-subtle);"></div><span class="body-medium-reg text-disabled">Disabled</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOGGLE -->
+      <div>
+        <div class="ds-subsection-title">Toggle</div>
+        <div class="ds-frame">
+          <div style="margin-bottom:12px;"><div class="ds-frame-label" style="margin-bottom:8px;">On</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <label class="toggle-wrap"><div class="toggle-track on"><div class="toggle-thumb"></div></div><span class="body-medium-reg">Label</span></label>
+              <label class="toggle-wrap disabled"><div class="toggle-track on"><div class="toggle-thumb" style="background:var(--icon-inactive);"></div></div><span class="body-medium-reg text-disabled">Disabled</span></label>
+            </div>
+          </div>
+          <div><div class="ds-frame-label" style="margin-bottom:8px;">Off</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <label class="toggle-wrap"><div class="toggle-track off"><div class="toggle-thumb"></div></div><span class="body-medium-reg">Label</span></label>
+              <label class="toggle-wrap"><div class="toggle-track off" style="background:var(--bg-subtle);border-color:var(--border-emphasis);"><div class="toggle-thumb"></div></div><span class="body-medium-reg">Hover</span></label>
+              <label class="toggle-wrap disabled"><div class="toggle-track off"><div class="toggle-thumb" style="background:var(--icon-inactive);"></div></div><span class="body-medium-reg text-disabled">Disabled</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       NAVIGATION
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Navigation</div>
+    <div class="ds-subsection-title">Breadcrumb</div>
+    <div class="ds-frame">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <div class="ds-frame-label" style="margin-bottom:8px;">Level 1</div>
+          <nav class="breadcrumb">
+            <span class="breadcrumb-item current">Dashboard</span>
+          </nav>
+        </div>
+        <div>
+          <div class="ds-frame-label" style="margin-bottom:8px;">Level 2</div>
+          <nav class="breadcrumb">
+            <span class="breadcrumb-item">Drivers</span>
+            <span class="material-icons-round breadcrumb-sep">chevron_right</span>
+            <span class="breadcrumb-item current">Eleonora D'Arborea</span>
+          </nav>
+        </div>
+        <div>
+          <div class="ds-frame-label" style="margin-bottom:8px;">Level 3</div>
+          <nav class="breadcrumb">
+            <span class="breadcrumb-item">Reservations</span>
+            <span class="material-icons-round breadcrumb-sep">chevron_right</span>
+            <span class="breadcrumb-item">RES 4521</span>
+            <span class="material-icons-round breadcrumb-sep">chevron_right</span>
+            <span class="breadcrumb-item current">Details</span>
+          </nav>
+        </div>
+        <div>
+          <div class="ds-frame-label" style="margin-bottom:8px;">Level 4</div>
+          <nav class="breadcrumb">
+            <span class="breadcrumb-item">Billing</span>
+            <span class="material-icons-round breadcrumb-sep">chevron_right</span>
+            <span class="breadcrumb-item">Invoices</span>
+            <span class="material-icons-round breadcrumb-sep">chevron_right</span>
+            <span class="breadcrumb-item">INV 0042</span>
+            <span class="material-icons-round breadcrumb-sep">chevron_right</span>
+            <span class="breadcrumb-item current">Payment</span>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       FORM FIELDS
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Form Fields</div>
+
+    <div class="three-col">
+      <!-- TEXT FIELD -->
+      <div>
+        <div class="ds-subsection-title">Text Field</div>
+        <div class="ds-frame">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <input class="field-input" type="text" placeholder="">
+            </div>
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <input class="field-input" type="text" style="border:1px solid var(--feedback-neutral);" placeholder="">
+            </div>
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <input class="field-input" type="text" value="Eleonora D'Arborea">
+            </div>
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <input class="field-input" type="text" placeholder="Enter full name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DROPDOWN -->
+      <div>
+        <div class="ds-subsection-title">Dropdown</div>
+        <div class="ds-frame">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <div class="field-select-wrap">
+                <select class="field-input"><option value="" disabled selected style="color:var(--text-subtle);">Select</option><option>Option 1</option><option>Option 2</option></select>
+                <span class="material-icons-round select-arrow">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <div class="field-select-wrap">
+                <select class="field-input" style="border:1px solid var(--feedback-neutral);"><option>Select</option></select>
+                <span class="material-icons-round select-arrow">keyboard_arrow_up</span>
+              </div>
+            </div>
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <div class="field-select-wrap">
+                <select class="field-input"><option>Option 1</option></select>
+                <span class="material-icons-round select-arrow">keyboard_arrow_down</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATE + FILTER -->
+      <div>
+        <div class="ds-subsection-title">Date Field</div>
+        <div class="ds-frame">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <div class="field-date-wrap">
+                <input class="field-input" type="text" placeholder="Select date" style="cursor:pointer;">
+                <span class="material-icons-round date-icon">calendar_today</span>
+              </div>
+            </div>
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <div class="field-date-wrap">
+                <input class="field-input" type="text" style="border:1px solid var(--feedback-neutral);" placeholder="Select date">
+                <span class="material-icons-round date-icon" style="color:var(--icon-default);">calendar_today</span>
+              </div>
+            </div>
+            <div class="field-wrap">
+              <label class="field-label">Label</label>
+              <div class="field-date-wrap">
+                <input class="field-input" type="text" value="08/04/2026 to 17/04/2026">
+                <span class="material-icons-round date-icon">calendar_today</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection-title">Filter</div>
+        <div class="ds-frame">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <div class="filter-btn"><span class="material-icons-round">person</span>Driver<span class="material-icons-round filter-arrow">keyboard_arrow_down</span></div>
+            <div class="filter-btn selected"><span class="material-icons-round">event</span>Apr 2026<span class="material-icons-round filter-arrow">keyboard_arrow_down</span></div>
+            <div class="filter-btn"><span class="material-icons-round">directions_car</span>Vehicle<span class="material-icons-round filter-arrow">keyboard_arrow_down</span></div>
+            <div class="filter-btn" style="border:1px solid var(--feedback-neutral);"><span class="material-icons-round">flag</span>Status<span class="material-icons-round filter-arrow">keyboard_arrow_down</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div class="ds-subsection-title">Upload</div>
+    <div class="two-col">
+      <div class="upload-area">
+        <span class="material-icons-round" style="font-size:24px;color:var(--icon-subtle);">upload</span>
+        <div>
+          <div class="upload-text">Drag &amp; drop or <span class="upload-link">Choose file</span> to upload</div>
+          <div class="upload-subtext">.png or .jpeg</div>
+        </div>
+      </div>
+      <div class="upload-area uploaded">
+        <span class="material-icons-round" style="font-size:24px;color:var(--feedback-neutral-icon);">check_circle</span>
+        <div>
+          <div class="upload-text" style="color:var(--feedback-neutral-text);">driver_photo.jpg uploaded</div>
+          <div class="upload-subtext">.png or .jpeg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       IDENTITY & MEDIA
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Identity & Media</div>
+    <div class="ds-frame">
+      <div class="ds-grid" style="align-items:flex-end;gap:24px;">
+
+        <!-- Circle avatar 40px -->
+        <div class="ds-grid-col" style="align-items:center;">
+          <div class="ds-state-label">Client Avatar 40px</div>
+          <div class="avatar-circle" style="width:40px;height:40px;">
+            <div class="avatar-placeholder" style="width:40px;height:40px;"><span class="material-icons-round" style="font-size:20px;">person</span></div>
+          </div>
+        </div>
+
+        <!-- Circle avatar 46px with edit -->
+        <div class="ds-grid-col" style="align-items:center;">
+          <div class="ds-state-label">With Edit Button</div>
+          <div style="position:relative;width:46px;height:46px;">
+            <div class="avatar-circle" style="width:40px;height:40px;position:absolute;top:0;left:0;">
+              <div class="avatar-placeholder" style="width:40px;height:40px;"><span class="material-icons-round" style="font-size:20px;">person</span></div>
+            </div>
+            <div class="avatar-edit-btn" style="position:absolute;bottom:0;right:0;">
+              <span class="material-icons-round">stylus</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Square avatar 40px -->
+        <div class="ds-grid-col" style="align-items:center;">
+          <div class="ds-state-label">Driver Avatar 40px</div>
+          <div class="avatar-square" style="width:40px;height:40px;">
+            <div class="avatar-placeholder" style="width:40px;height:40px;border-radius:var(--radius-8);"><span class="material-icons-round" style="font-size:20px;">person</span></div>
+          </div>
+        </div>
+
+        <!-- Large 56px with delete -->
+        <div class="ds-grid-col" style="align-items:center;">
+          <div class="ds-state-label">Driver Photo 56px</div>
+          <div style="position:relative;width:56px;height:56px;">
+            <div class="avatar-square" style="width:56px;height:56px;border-radius:var(--radius-8);">
+              <div class="avatar-placeholder" style="width:56px;height:56px;border-radius:var(--radius-8);"><span class="material-icons-round" style="font-size:28px;">person</span></div>
+            </div>
+            <div class="avatar-delete-btn">
+              <span class="material-icons-round" style="font-size:12px;">delete</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       CALENDAR
+       ====================================================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Calendar</div>
+    <div class="ds-grid" style="align-items:flex-start;gap:24px;">
+
+      <!-- Day view -->
+      <div>
+        <div class="ds-frame-label">Day View — Default</div>
+        <div class="calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_left</span></button>
+            <span class="calendar-title">Apr 2026</span>
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_right</span></button>
+          </div>
+          <div class="calendar-grid">
+            <div class="calendar-weekdays">
+              <div class="calendar-weekday">Mo</div><div class="calendar-weekday">Tu</div><div class="calendar-weekday">We</div><div class="calendar-weekday">Th</div><div class="calendar-weekday">Fr</div><div class="calendar-weekday">Sa</div><div class="calendar-weekday">Su</div>
+            </div>
+            <div class="calendar-days">
+              <div class="cal-day inactive">29</div><div class="cal-day inactive">30</div><div class="cal-day inactive">31</div><div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+              <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div>
+              <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day today">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div>
+              <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+              <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day inactive">1</div><div class="cal-day inactive">2</div>
+            </div>
+          </div>
+          <div class="calendar-footer">
+            <button class="btn btn-tertiary" style="flex:1;justify-content:center;font-size:12px;">Cancel</button>
+            <button class="btn btn-lg-primary" style="flex:1;justify-content:center;font-size:12px;">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Period selection -->
+      <div>
+        <div class="ds-frame-label">Day View — Period Selected</div>
+        <div class="calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_left</span></button>
+            <span class="calendar-title">Apr 2026</span>
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_right</span></button>
+          </div>
+          <div class="calendar-grid">
+            <div class="calendar-weekdays">
+              <div class="calendar-weekday">Mo</div><div class="calendar-weekday">Tu</div><div class="calendar-weekday">We</div><div class="calendar-weekday">Th</div><div class="calendar-weekday">Fr</div><div class="calendar-weekday">Sa</div><div class="calendar-weekday">Su</div>
+            </div>
+            <div class="calendar-days">
+              <div class="cal-day inactive">29</div><div class="cal-day inactive">30</div><div class="cal-day inactive">31</div><div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+              <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day selected-initial">8</div><div class="cal-day interval">9</div><div class="cal-day interval">10</div><div class="cal-day interval">11</div>
+              <div class="cal-day interval">12</div><div class="cal-day interval">13</div><div class="cal-day interval">14</div><div class="cal-day interval">15</div><div class="cal-day interval">16</div><div class="cal-day selected-final">17</div><div class="cal-day">18</div>
+              <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+              <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day inactive">1</div><div class="cal-day inactive">2</div>
+            </div>
+          </div>
+          <div class="calendar-footer">
+            <button class="btn btn-tertiary" style="flex:1;justify-content:center;font-size:12px;">Cancel</button>
+            <button class="btn btn-lg-primary" style="flex:1;justify-content:center;font-size:12px;">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Year view -->
+      <div>
+        <div class="ds-frame-label">Year View</div>
+        <div class="calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_left</span></button>
+            <span class="calendar-title">2011 – 2030</span>
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_right</span></button>
+          </div>
+          <div class="cal-year-grid">
+            <div class="cal-year-cell">2011</div><div class="cal-year-cell">2012</div><div class="cal-year-cell">2013</div><div class="cal-year-cell">2014</div>
+            <div class="cal-year-cell">2015</div><div class="cal-year-cell">2016</div><div class="cal-year-cell">2017</div><div class="cal-year-cell">2018</div>
+            <div class="cal-year-cell">2019</div><div class="cal-year-cell">2020</div><div class="cal-year-cell">2021</div><div class="cal-year-cell">2022</div>
+            <div class="cal-year-cell">2023</div><div class="cal-year-cell">2024</div><div class="cal-year-cell">2025</div><div class="cal-year-cell selected">2026</div>
+            <div class="cal-year-cell">2027</div><div class="cal-year-cell">2028</div><div class="cal-year-cell">2029</div><div class="cal-year-cell">2030</div>
+          </div>
+          <div class="calendar-footer">
+            <button class="btn btn-tertiary" style="flex:1;justify-content:center;font-size:12px;">Cancel</button>
+            <button class="btn btn-lg-primary" style="flex:1;justify-content:center;font-size:12px;">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Month view -->
+      <div>
+        <div class="ds-frame-label">Month View</div>
+        <div class="calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_left</span></button>
+            <span class="calendar-title">2026</span>
+            <button class="calendar-nav-btn"><span class="material-icons-round">chevron_right</span></button>
+          </div>
+          <div class="cal-month-grid">
+            <div class="cal-month-cell">Jan</div><div class="cal-month-cell">Feb</div><div class="cal-month-cell">Mar</div>
+            <div class="cal-month-cell selected">Apr</div><div class="cal-month-cell">May</div><div class="cal-month-cell">Jun</div>
+            <div class="cal-month-cell">Jul</div><div class="cal-month-cell">Ago</div><div class="cal-month-cell">Sep</div>
+            <div class="cal-month-cell">Oct</div><div class="cal-month-cell">Nov</div><div class="cal-month-cell">Dec</div>
+          </div>
+          <div class="calendar-footer">
+            <button class="btn btn-tertiary" style="flex:1;justify-content:center;font-size:12px;">Cancel</button>
+            <button class="btn btn-lg-primary" style="flex:1;justify-content:center;font-size:12px;">Apply</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-16) 0;">
+    <div style="font-size:11px;color:var(--text-disabled);">Argo Design System · playmoove · Intentionally monochromatic</div>
+    <div style="display:flex;gap:8px;">
+      <div class="status-label status-success">Light Mode</div>
+      <div class="status-label status-neutral">v1.0</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+// Interactive toggles
+document.querySelectorAll('.toggle-wrap:not(.disabled)').forEach(wrap => {
+  wrap.addEventListener('click', () => {
+    const track = wrap.querySelector('.toggle-track');
+    track.classList.toggle('on');
+    track.classList.toggle('off');
+  });
+});
+
+// Interactive checkboxes
+document.querySelectorAll('.checkbox-wrap:not(.disabled)').forEach(wrap => {
+  wrap.addEventListener('click', (e) => {
+    e.preventDefault();
+    const control = wrap.querySelector('.checkbox-control');
+    control.classList.toggle('checked');
+    if (control.classList.contains('checked')) {
+      control.innerHTML = '<span class="material-icons-round">check</span>';
+    } else {
+      control.innerHTML = '';
+    }
+  });
+});
+
+// Interactive radios
+document.querySelectorAll('.radio-wrap:not(.disabled)').forEach(wrap => {
+  wrap.addEventListener('click', (e) => {
+    e.preventDefault();
+    const control = wrap.querySelector('.radio-control');
+    control.classList.toggle('checked');
+  });
+});
+
+// Calendar day clicks
+let startDay = null;
+
+document
+  .querySelectorAll('.cal-day:not(.inactive):not(.disabled)')
+  .forEach(day => {
+
+    day.addEventListener('click', () => {
+
+      if (!startDay) {
+
+        startDay = day;
+
+        day.classList.add(
+          'selected-initial'
+        );
+
+        return;
+
+      }
+
+      const days = Array.from(
+        document.querySelectorAll('.cal-day')
+      );
+
+      const startIndex =
+        days.indexOf(startDay);
+
+      const endIndex =
+        days.indexOf(day);
+
+      const min =
+        Math.min(startIndex, endIndex);
+
+      const max =
+        Math.max(startIndex, endIndex);
+
+      days.forEach(d => {
+
+        d.classList.remove(
+          'selected-initial',
+          'selected-final',
+          'interval'
+        );
+
+      });
+
+      days[min].classList.add(
+        'selected-initial'
+      );
+
+      days[max].classList.add(
+        'selected-final'
+      );
+
+      for (
+        let i = min + 1;
+        i < max;
+        i++
+      ) {
+
+        days[i].classList.add(
+          'interval'
+        );
+
+      }
+
+      startDay = null;
+
+    });
+
+});
+   
+// Year cell clicks
+document.querySelectorAll('.cal-year-cell:not(.disabled)').forEach(cell => {
+  cell.addEventListener('click', () => {
+    document.querySelectorAll('.cal-year-cell').forEach(c => c.classList.remove('selected'));
+    cell.classList.add('selected');
+  });
+});
+
+// Month cell clicks
+document.querySelectorAll('.cal-month-cell:not(.disabled)').forEach(cell => {
+  cell.addEventListener('click', () => {
+    document.querySelectorAll('.cal-month-cell').forEach(c => c.classList.remove('selected'));
+    cell.classList.add('selected');
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Tabs interaction
+  const tabs = document.querySelectorAll(".ds-tab");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+    });
+  });
+
+  // Theme toggle support
+  window.toggleTheme = function () {
+    const root = document.documentElement;
+    root.dataset.theme =
+      root.dataset.theme === "dark" ? "light" : "dark";
+  };
+
+});
+</script>
 
 </body>
 </html>
