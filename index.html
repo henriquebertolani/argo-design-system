@@ -856,22 +856,20 @@ body {
 
 .toggle-wrap.disabled {
   pointer-events: none;
+  cursor: not-allowed;
 }
 
 .toggle-wrap.disabled .toggle-track {
-  background: var(--bg-muted);
-
+  background: var(--feedback-inactive-surface);
   border: var(--border-s) solid var(--border-subtle);
 }
 
 .toggle-wrap.disabled .toggle-thumb {
-  background: var(--icon-inactive);
+  background: var(--feedback-inactive-icon);
 }
-   
-.toggle-wrap:hover .toggle-track.off {
-  background: var(--bg-subtle);
 
-  border: var(--border-s) solid var(--border-emphasis);
+.toggle-wrap.disabled .toggle-track.on {
+  background: var(--feedback-inactive-surface);
 }
 
 /* ============================================================
