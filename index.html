@@ -225,18 +225,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
 .cc .ms{font-size:12px;color:var(--fsic);display:none}.cc.on .ms{display:flex}
 .cw:hover .cc{background:var(--bgs);border-color:var(--bre)}.cw:active .cc{background:var(--bgm)}
 .cw.cdis{pointer-events:none}.cw.cdis .cc{background:var(--bgm);border-color:var(--brs)}.cw.cdis .cc .ms{color:var(--idis)}
-/* toggle */
-.tw{display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
-.tt{width:44px;height:24px;border-radius:9999px;display:flex;align-items:center;padding:3px;transition:background .2s;position:relative;flex-shrink:0}
-.tt.on{background:var(--fn)}.tt.off{background:var(--bgm);border:.5px solid var(--bbd)}
-.th{width:18px;height:18px;border-radius:50%;background:white;transition:transform .2s;flex-shrink:0}
-.tt.on .th{transform:translateX(20px)}.tt.off .th{transform:translateX(0)}
-.tw:hover .tt.off{background:var(--bgs);border-color:var(--bre)}
-.tw.tdis{pointer-events:none}
+/* disabled ON */
 .tw.tdis .tt.on{background:var(--fnsd)}
+/* disabled OFF */  
 .tw.tdis .tt.off{background:var(--bgm);border-color:var(--brs)}
-/* disabled thumb: visible grey circle in BOTH on and off */
-.tw.tdis .th{background:var(--bgm);border:1px solid var(--brd)}
+/* thumb disabled: fill bg/subtle + stroke button/disabled-border + cor icon/inactive */
+.tw.tdis .th{
+  background:var(--bgs);
+  border:.5px solid var(--bbdis);
+  box-shadow:none;}
 /* ── BREADCRUMB ───────────────────────────────────────────── */
 .bc{display:inline-flex;align-items:center;gap:6px;height:24px}
 .bci{display:inline-flex;align-items:center;font-size:14px;line-height:18px;cursor:pointer;color:var(--ts);transition:color .1s;border-bottom:1px solid transparent;padding-bottom:1px}
@@ -267,17 +264,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
 .can .ms{font-size:16px;color:var(--is)}
 .cat{font-size:12px;color:var(--tr);cursor:pointer}.cat:hover{color:var(--fnt)}
 .cag{padding:8px;display:flex;flex-direction:column;gap:10px}
-.cawd{display:grid;grid-template-columns:repeat(7,30px);justify-content:space-between}
+.cawd{display:grid;grid-template-columns:repeat(7,30px);gap:0;justify-content:space-between}
 .cawdi{width:30px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ta)}
-.cawk{display:flex}
+.cawk{display:grid;grid-template-columns:repeat(7,30px);gap:0;justify-content:space-between}
 .cad{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--tr);cursor:pointer;position:relative;border-radius:9999px;flex-shrink:0}
 .cad:hover{background:var(--bgs)}
 .cad.ina{color:var(--td);pointer-events:none}
 .cad.tod{font-weight:600;color:var(--fnt)}
-/* range — continuous fill */
+/* range — start e end são círculos completos, cauda em half */
 .cad.r-s,.cad.r-e{background:var(--brd)!important;font-weight:500;border-radius:9999px;z-index:1}
-.cad.r-s::after,.cad.r-e::after{content:'';position:absolute;top:0;bottom:0;width:50%;background:var(--fis);z-index:-1}
-.cad.r-s::after{right:0;border-radius:0}.cad.r-e::after{left:0;border-radius:0}
+.cad.r-s::after{content:'';position:absolute;top:0;bottom:0;right:0;width:50%;background:var(--fis);z-index:-1;border-radius:0}
+.cad.r-e::after{content:'';position:absolute;top:0;bottom:0;left:0;width:50%;background:var(--fis);z-index:-1;border-radius:0}
 .cad.r-i{background:var(--fis);border-radius:0;color:var(--tr)}
 .cad.r-i:hover{background:var(--bgs)}
 .caf{display:flex;gap:6px;padding:8px;border-top:.5px solid var(--brs)}
@@ -502,12 +499,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
       <div class="sub-t">Surface Token Map</div>
       <div class="frm">
         <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:#FCFCFC"><div style="font-size:12px;font-weight:500;color:#272727">bg/default · #FCFCFC</div><div style="font-size:11px;color:#8A8A8A;margin-top:2px">Page bg, cards, drawers, modals, dropdowns</div></div>
-          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:#F7F7F7"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/elevated · #F7F7F7</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Sidebar, inner menu, right panel</div></div>
-          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:#F4F4F4"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/raised · #F4F4F4</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Table header rows, DS documentation frames</div></div>
-          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:#F0F0F0"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/subtle · #F0F0F0</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Hover states, pressed button backgrounds</div></div>
-          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:#E1E1E1"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/muted · #E1E1E1</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Inactive toggle, disabled component backgrounds</div></div>
-        </div>
+          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:var(--bgd)"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/default</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Page bg, cards, drawers, modals, dropdowns</div></div>
+          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:var(--bge)"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/elevated</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Sidebar, inner menu, right panel</div></div>
+          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:var(--bgr)"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/raised</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Table header rows, DS documentation frames</div></div>
+          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:var(--bgs)"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/subtle</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Hover states, pressed button backgrounds</div></div>
+          <div style="padding:12px;border-radius:8px;border:.5px solid var(--brd);background:var(--bgm)"><div style="font-size:12px;font-weight:500;color:var(--tr)">bg/muted</div><div style="font-size:11px;color:var(--ts);margin-top:2px">Inactive toggle, disabled component backgrounds</div></div>        </div>
       </div>
     </div>
   </div>
