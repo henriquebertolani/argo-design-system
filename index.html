@@ -374,26 +374,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
   <div class="sub-t">Text</div>
   <div class="cg" style="grid-template-columns:repeat(5,1fr)">
     <div class="cs"><div class="ch" style="background:#272727"></div><div class="ci"><span class="cn">text/regular</span><span class="cx">#272727 / #F5F5F7</span><span class="cd">Primary content — names, values, dates, addresses. Default for all readable data.</span></div></div>
-    <div class="cs"><div class="ch" style="background:#8A8A8A"></div><div class="ci"><span class="cn">text/subtle</span><span class="cx">#8A8A8A / #83838E</span><span class="cd">Field labels above values, column headers, timestamps, metadata. Always secondary.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--bre)"></div><div class="ci"><span class="cn">text/subtle</span><span class="cx">#8A8A8A / #83838E</span><span class="cd">Field labels above values, column headers, timestamps, metadata. Always secondary.</span></div></div>
     <div class="cs"><div class="ch" style="background:#565656"></div><div class="ci"><span class="cn">text/accent</span><span class="cx">#565656 / #C1C1C9</span><span class="cd">Inactive breadcrumb items and secondary navigation elements.</span></div></div>
     <div class="cs"><div class="ch" style="background:#C1C1C9"></div><div class="ci"><span class="cn">text/disabled</span><span class="cx">#C1C1C9 / #686873</span><span class="cd">Input placeholders and disabled field labels. Signals awaiting interaction.</span></div></div>
-    <div class="cs"><div class="ch" style="background:#F0F0F0;border-bottom:.5px solid #D0D0D0"></div><div class="ci"><span class="cn">text/on-dark</span><span class="cx">#F0F0F0 / #F0F0F0</span><span class="cd">White foreground on dark backgrounds. Remains white in both modes.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--bgs);border-bottom:.5px solid var(--brd)"></div><div class="ci"><span class="cn">text/on-dark</span><span class="cx">#F0F0F0 / #F0F0F0</span><span class="cd">White foreground on dark backgrounds. Remains white in both modes.</span></div></div>
   </div>
 
   <div class="sub-t">Background</div>
   <div class="cg" style="grid-template-columns:repeat(5,1fr)">
-    <div class="cs"><div class="ch" style="background:#FCFCFC;border-bottom:.5px solid #D0D0D0"></div><div class="ci"><span class="cn">bg/default</span><span class="cx">#FCFCFC / #1B1B22</span><span class="cd">Main application background. Base surface for all pages.</span></div></div>
-    <div class="cs"><div class="ch" style="background:#F7F7F7"></div><div class="ci"><span class="cn">bg/elevated</span><span class="cx">#F7F7F7 / #24242D</span><span class="cd">Slightly elevated surface — sidebars, panels, secondary areas.</span></div></div>
-    <div class="cs"><div class="ch" style="background:#F4F4F4"></div><div class="ci"><span class="cn">bg/raised</span><span class="cx">#F4F4F4 / #2A2A34</span><span class="cd">DS documentation frames, configuration backgrounds.</span></div></div>
-    <div class="cs"><div class="ch" style="background:#F0F0F0"></div><div class="ci"><span class="cn">bg/subtle</span><span class="cx">#F0F0F0 / #30303A</span><span class="cd">Hover and pressed states, low emphasis containers.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--bgd);border-bottom:.5px solid var(--brd)"></div><div class="ci"><span class="cn">bg/default</span><span class="cx">#FCFCFC / #1B1B22</span><span class="cd">Main application background. Base surface for all pages.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--bge)"></div><div class="ci"><span class="cn">bg/elevated</span><span class="cx">#F7F7F7 / #24242D</span><span class="cd">Slightly elevated surface — sidebars, panels, secondary areas.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--bgr)"></div><div class="ci"><span class="cn">bg/raised</span><span class="cx">#F4F4F4 / #2A2A34</span><span class="cd">DS documentation frames, configuration backgrounds.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--bgs)"></div><div class="ci"><span class="cn">bg/subtle</span><span class="cx">#F0F0F0 / #30303A</span><span class="cd">Hover and pressed states, low emphasis containers.</span></div></div>
     <div class="cs"><div class="ch" style="background:#E1E1E1"></div><div class="ci"><span class="cn">bg/muted</span><span class="cx">#E1E1E1 / #3A3A45</span><span class="cd">Inactive toggle background, muted UI elements.</span></div></div>
   </div>
 
   <div class="sub-t">Border</div>
   <div class="cg" style="grid-template-columns:repeat(3,1fr)">
-    <div class="cs"><div class="ch" style="background:#D0D0D0"></div><div class="ci"><span class="cn">border/default</span><span class="cx">#D0D0D0 / #454550</span><span class="cd">Default border for cards, inputs, and dividers. Default border width is 0.5px.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--brd)"></div><div class="ci"><span class="cn">border/default</span><span class="cx">#D0D0D0 / #454550</span><span class="cd">Default border for cards, inputs, and dividers. Default border width is 0.5px.</span></div></div>
     <div class="cs"><div class="ch" style="background:#E1E1E1"></div><div class="ci"><span class="cn">border/subtle</span><span class="cx">#E1E1E1 / #3A3A45</span><span class="cd">Subtle separation — internal dividers, row separators.</span></div></div>
-    <div class="cs"><div class="ch" style="background:#8A8A8A"></div><div class="ci"><span class="cn">border/emphasis</span><span class="cx">#8A8A8A / #83838E</span><span class="cd">Focused input state — visible ring on active fields.</span></div></div>
+    <div class="cs"><div class="ch" style="background:var(--bre)"></div><div class="ci"><span class="cn">border/emphasis</span><span class="cx">#8A8A8A / #83838E</span><span class="cd">Focused input state — visible ring on active fields.</span></div></div>
   </div>
 
   <div class="sub-t">Feedback</div>
@@ -401,29 +401,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
     <div><p style="font-size:11px;font-weight:500;color:var(--ts);margin-bottom:8px">Success</p>
       <div class="cg" style="grid-template-columns:1fr">
         <div class="cs"><div class="ch" style="background:#00D065"></div><div class="ci"><span class="cn">feedback/success</span><span class="cx">#00D065</span><span class="cd">Confirmed and approved. Positive outcomes.</span></div></div>
-        <div class="cs"><div class="ch" style="background:#E6FAF2"></div><div class="ci"><span class="cn">success surface</span><span class="cx">#E6FAF2 / #1F3D2E</span></div></div>
-        <div class="cs"><div class="ch" style="background:#1D8644"></div><div class="ci"><span class="cn">success text</span><span class="cx">#1D8644 / #00D065</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fss)"></div><div class="ci"><span class="cn">success surface</span><span class="cx">#E6FAF2 / #1F3D2E</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fst)"></div><div class="ci"><span class="cn">success text</span><span class="cx">#1D8644 / #00D065</span></div></div>
       </div>
     </div>
     <div><p style="font-size:11px;font-weight:500;color:var(--ts);margin-bottom:8px">Attention</p>
       <div class="cg" style="grid-template-columns:1fr">
         <div class="cs"><div class="ch" style="background:#FFB200"></div><div class="ci"><span class="cn">feedback/attention</span><span class="cx">#FFB200</span><span class="cd">Pending, on hold, or attention states requiring review.</span></div></div>
-        <div class="cs"><div class="ch" style="background:#FFF8E6"></div><div class="ci"><span class="cn">attention surface</span><span class="cx">#FFF8E6 / #3D3416</span></div></div>
-        <div class="cs"><div class="ch" style="background:#A37315"></div><div class="ci"><span class="cn">attention text</span><span class="cx">#A37315 / #FFB200</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fas)"></div><div class="ci"><span class="cn">attention surface</span><span class="cx">#FFF8E6 / #3D3416</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fat)"></div><div class="ci"><span class="cn">attention text</span><span class="cx">#A37315 / #FFB200</span></div></div>
       </div>
     </div>
     <div><p style="font-size:11px;font-weight:500;color:var(--ts);margin-bottom:8px">Warning</p>
       <div class="cg" style="grid-template-columns:1fr">
         <div class="cs"><div class="ch" style="background:#FF153C"></div><div class="ci"><span class="cn">feedback/warning</span><span class="cx">#FF153C</span><span class="cd">Critical flags, destructive actions, and error states.</span></div></div>
-        <div class="cs"><div class="ch" style="background:#FFE6E9"></div><div class="ci"><span class="cn">warning surface</span><span class="cx">#FFE6E9 / #37161B</span></div></div>
-        <div class="cs"><div class="ch" style="background:#A4202A"></div><div class="ci"><span class="cn">warning text</span><span class="cx">#A4202A / #FF153C</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fws)"></div><div class="ci"><span class="cn">warning surface</span><span class="cx">#FFE6E9 / #37161B</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fwt)"></div><div class="ci"><span class="cn">warning text</span><span class="cx">#A4202A / #FF153C</span></div></div>
       </div>
     </div>
     <div><p style="font-size:11px;font-weight:500;color:var(--ts);margin-bottom:8px">Neutral</p>
       <div class="cg" style="grid-template-columns:1fr">
         <div class="cs"><div class="ch" style="background:#2F6BFF"></div><div class="ci"><span class="cn">feedback/neutral</span><span class="cx">#2F6BFF</span><span class="cd">Active states, selected items, in progress operations.</span></div></div>
-        <div class="cs"><div class="ch" style="background:#EBF8FF"></div><div class="ci"><span class="cn">neutral surface</span><span class="cx">#EBF8FF / #1A2342</span></div></div>
-        <div class="cs"><div class="ch" style="background:#1F3FA8"></div><div class="ci"><span class="cn">neutral text</span><span class="cx">#1F3FA8 / #2F6BFF</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fns)"></div><div class="ci"><span class="cn">neutral surface</span><span class="cx">#EBF8FF / #1A2342</span></div></div>
+        <div class="cs"><div class="ch" style="background:var(--fnt)"></div><div class="ci"><span class="cn">neutral text</span><span class="cx">#1F3FA8 / #2F6BFF</span></div></div>
       </div>
     </div>
   </div>
@@ -434,8 +434,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
     <div class="isw"><span class="ms" style="color:#272727">person</span><span>icon/default<br>#272727</span></div>
     <div class="isw"><span class="ms" style="color:#565656">person</span><span>icon/subtle<br>#565656</span></div>
     <div class="isw"><span class="ms" style="color:#E1E1E1">person</span><span>icon/inactive<br>#E1E1E1</span></div>
-    <div class="isw"><span class="ms" style="color:#8A8A8A">person</span><span>icon/disabled<br>#8A8A8A</span></div>
-    <div class="isw" style="background:#272727;border-color:var(--brd)"><span class="ms" style="color:#FCFCFC">person</span><span style="color:#FCFCFC">icon/on-dark<br>#FCFCFC</span></div>
+    <div class="isw"><span class="ms" style="color:var(--bre)">person</span><span>icon/disabled<br>#8A8A8A</span></div>
+    <div class="isw" style="background:#272727;border-color:var(--brd)"><span class="ms" style="color:var(--bgd)">person</span><span style="color:var(--bgd)">icon/on-dark<br>#FCFCFC</span></div>
     <div class="isw"><span class="ms" style="color:#00D065">check_circle</span><span>success icon<br>#00D065</span></div>
     <div class="isw"><span class="ms" style="color:#FF153C">cancel</span><span>warning icon<br>#FF153C</span></div>
     <div class="isw"><span class="ms" style="color:#FFB200">error</span><span>attention icon<br>#FFB200</span></div>
@@ -494,12 +494,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
   <div class="g2">
     <div>
       <div class="sub-t">Surface Layers</div>
-      <div class="ec" style="background:#FCFCFC"><div class="el-lbl">Base</div><div class="el-nm">Page background</div><div class="el-ds">bg/default #FCFCFC / #1B1B22 — The entire page sits on this surface.</div></div>
-      <div class="ec" style="background:#F7F7F7"><div class="el-lbl">Layer 1</div><div class="el-nm">Sidebar & panels</div><div class="el-ds">bg/elevated #F7F7F7 / #24242D — Slightly darker creates separation from content.</div></div>
-      <div class="ec" style="background:#F4F4F4"><div class="el-lbl">Layer 2</div><div class="el-nm">Table header rows</div><div class="el-ds">bg/raised #F4F4F4 / #2A2A34 — Darkest neutral distinguishes header from data rows.</div></div>
-      <div class="ec" style="background:#FCFCFC"><div class="el-lbl">Layer 3</div><div class="el-nm">Cards & sections</div><div class="el-ds">bg/default #FCFCFC — Same as base, separated by border/default 0.5px.</div></div>
-      <div class="ec" style="background:#FCFCFC"><div class="el-lbl">Layer 4</div><div class="el-nm">Dropdowns & drawers</div><div class="el-ds">bg/default #FCFCFC — Same as base, separated by border/default 0.5px.</div></div>
-      <div class="ec" style="background:#FCFCFC"><div class="el-lbl">Layer 5</div><div class="el-nm">Modals & overlays</div><div class="el-ds">bg/default #FCFCFC — Same as base. Overlay uses semi-transparent black scrim.</div></div>
+      <div class="ec" style="background:var(--bgd)"><div class="el-lbl">Base</div><div class="el-nm">Page background</div><div class="el-ds">bg/default #FCFCFC / #1B1B22 — The entire page sits on this surface.</div></div>
+      <div class="ec" style="background:var(--bge)"><div class="el-lbl">Layer 1</div><div class="el-nm">Sidebar & panels</div><div class="el-ds">bg/elevated #F7F7F7 / #24242D — Slightly darker creates separation from content.</div></div>
+      <div class="ec" style="background:var(--bgr)"><div class="el-lbl">Layer 2</div><div class="el-nm">Table header rows</div><div class="el-ds">bg/raised #F4F4F4 / #2A2A34 — Darkest neutral distinguishes header from data rows.</div></div>
+      <div class="ec" style="background:var(--bgd)"><div class="el-lbl">Layer 3</div><div class="el-nm">Cards & sections</div><div class="el-ds">bg/default #FCFCFC — Same as base, separated by border/default 0.5px.</div></div>
+      <div class="ec" style="background:var(--bgd)"><div class="el-lbl">Layer 4</div><div class="el-nm">Dropdowns & drawers</div><div class="el-ds">bg/default #FCFCFC — Same as base, separated by border/default 0.5px.</div></div>
+      <div class="ec" style="background:var(--bgd)"><div class="el-lbl">Layer 5</div><div class="el-nm">Modals & overlays</div><div class="el-ds">bg/default #FCFCFC — Same as base. Overlay uses semi-transparent black scrim.</div></div>
     </div>
     <div>
       <div class="sub-t">Surface Token Map</div>
