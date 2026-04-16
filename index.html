@@ -82,7 +82,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
 .sec{margin-bottom:48px}
 .sec-t{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ts);margin-bottom:24px;padding-bottom:8px;border-bottom:.5px solid var(--brd)}
 .sub-t{font-size:12px;font-weight:500;color:var(--ta);margin-bottom:12px;margin-top:24px}
-.frm{background:var(--bgr);border:.5px solid var(--brd);border-radius:8px;padding:24px;margin-bottom:16px}
+.frm{background:var(--bgd);border:.5px solid var(--brd);border-radius:8px;padding:24px;margin-bottom:16px}
 .desc{background:var(--bge);border:.5px solid var(--brs);border-radius:6px;padding:16px;margin-bottom:16px}
 .desc p{font-size:12px;line-height:1.7;color:var(--ts)}
 .desc strong{color:var(--tr);font-weight:500}
@@ -205,8 +205,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
 /* ── FUEL ─────────────────────────────────────────────────── */
 .fww{display:flex;flex-direction:column;gap:6px;min-width:180px}
 .fwh{display:flex;align-items:center;justify-content:space-between}
-.fwt{height:10px;border-radius:9999px;overflow:hidden}
-.fwf{height:100%;border-radius:9999px;transition:width .3s}
+.fwt{height:10px;border-radius:9999px;background:transparent;overflow:visible;position:relative}
+.fwf{height:100%;border-radius:9999px 0 0 9999px;transition:width .3s;position:relative;z-index:1}
 .fw-n .fwt{background:var(--fss)}.fw-n .fwf{background:var(--fs)}
 .fw-l .fwt{background:var(--fas)}.fw-l .fwf{background:var(--fa)}
 .fw-c .fwt{background:var(--fws)}.fw-c .fwf{background:var(--fw)}
