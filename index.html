@@ -266,21 +266,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
 .can{width:24px;height:24px;border-radius:6px;border:.5px solid var(--brd);background:var(--bsd);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .can .ms{font-size:16px;color:var(--is)}
 .cat{font-size:12px;color:var(--tr);cursor:pointer}.cat:hover{color:var(--fnt)}
-.cag{padding:8px;display:flex;flex-direction:column;gap:0}
-.cawk{margin-bottom:2px}
-.cawd{display:grid;grid-template-columns:repeat(7,30px);gap:0;justify-content:space-between}
+.cag{padding:0 8px 8px;display:flex;flex-direction:column}
+.cawd{display:grid;grid-template-columns:repeat(7,30px);justify-content:space-between;padding:8px 0 4px}
 .cawdi{width:30px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ta)}
-.cawk{display:grid;grid-template-columns:repeat(7,30px);gap:0;justify-content:space-between}
-.cad{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--tr);cursor:pointer;position:relative;border-radius:9999px;flex-shrink:0}
+.cawk{display:grid;grid-template-columns:repeat(7,30px);justify-content:space-between;position:relative}
+.cad{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--tr);cursor:pointer;position:relative;z-index:1;border-radius:9999px}
 .cad:hover{background:var(--bgs)}
 .cad.ina{color:var(--td);pointer-events:none}
 .cad.tod{font-weight:600;color:var(--fnt)}
-/* range — start e end são círculos completos, cauda em half */
-.cad.r-s,.cad.r-e{background:var(--brd)!important;font-weight:500;border-radius:9999px;z-index:1;isolation:isolate}
-.cad.r-s::after{content:'';position:absolute;top:0;bottom:0;right:-1px;width:calc(50% + 1px);background:var(--fis);z-index:-1}
-.cad.r-e::after{content:'';position:absolute;top:0;bottom:0;left:-1px;width:calc(50% + 1px);background:var(--fis);z-index:-1}
-.cad.r-i{background:var(--fis);border-radius:0;color:var(--tr)}
-.cad.r-i:hover{background:var(--bgs)}
+/* range fill via background on the row segment */
+.cad.r-i{color:var(--tr);border-radius:0}
+.cad.r-i::before{content:'';position:absolute;inset:0;background:var(--fis);z-index:-1}
+.cad.r-s{border-radius:9999px;font-weight:500}
+.cad.r-s::before{content:'';position:absolute;top:0;bottom:0;left:50%;right:-15px;background:var(--fis);z-index:-1}
+.cad.r-e{border-radius:9999px;font-weight:500}
+.cad.r-e::before{content:'';position:absolute;top:0;bottom:0;right:50%;left:-15px;background:var(--fis);z-index:-1}
+.cad.r-s,.cad.r-e{background:var(--brd)!important}
+.cad.r-s:hover,.cad.r-e:hover{background:var(--bre)!important}
 .caf{display:flex;gap:6px;padding:8px;border-top:.5px solid var(--brs)}
 .caf .btn{flex:1;justify-content:center;font-size:12px}
 .cyg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:8px}
@@ -1112,71 +1114,61 @@ body{font-family:'DM Sans',sans-serif;background:var(--bgd);color:var(--tr);font
   </div>
 
   <div class="row" style="align-items:flex-start;gap:24px">
-    <!-- Day default -->
-    <div>
-      <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Day View — Default</p>
-      <div class="cal">
-        <div class="cah"><button class="can"><span class="ms">chevron_left</span></button><span class="cat">Apr 2026</span><button class="can"><span class="ms">chevron_right</span></button></div>
-        <div class="cag">
-          <div class="cawd"><div class="cawdi">Mo</div><div class="cawdi">Tu</div><div class="cawdi">We</div><div class="cawdi">Th</div><div class="cawdi">Fr</div><div class="cawdi">Sa</div><div class="cawdi">Su</div></div>
-          <div class="cawk"><div class="cad ina">29</div><div class="cad ina">30</div><div class="cad ina">31</div><div class="cad">1</div><div class="cad">2</div><div class="cad">3</div><div class="cad">4</div></div>
-          <div class="cawk"><div class="cad">5</div><div class="cad">6</div><div class="cad">7</div><div class="cad">8</div><div class="cad">9</div><div class="cad">10</div><div class="cad">11</div></div>
-          <div class="cawk"><div class="cad">12</div><div class="cad">13</div><div class="cad">14</div><div class="cad tod">15</div><div class="cad">16</div><div class="cad">17</div><div class="cad">18</div></div>
-          <div class="cawk"><div class="cad">19</div><div class="cad">20</div><div class="cad">21</div><div class="cad">22</div><div class="cad">23</div><div class="cad">24</div><div class="cad">25</div></div>
-          <div class="cawk"><div class="cad">26</div><div class="cad">27</div><div class="cad">28</div><div class="cad">29</div><div class="cad">30</div><div class="cad ina">1</div><div class="cad ina">2</div></div>
-        </div>
-        <div class="caf"><button class="btn bt">Cancel</button><button class="btn bp">Apply</button></div>
-      </div>
-    </div>
 
-    <!-- Day range — continuous fill -->
-    <div>
-      <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Day View — Range (continuous fill)</p>
-      <div class="cal">
-        <div class="cah"><button class="can"><span class="ms">chevron_left</span></button><span class="cat">Apr 2026</span><button class="can"><span class="ms">chevron_right</span></button></div>
-        <div class="cag">
-          <div class="cawd"><div class="cawdi">Mo</div><div class="cawdi">Tu</div><div class="cawdi">We</div><div class="cawdi">Th</div><div class="cawdi">Fr</div><div class="cawdi">Sa</div><div class="cawdi">Su</div></div>
-          <div class="cawk"><div class="cad ina">29</div><div class="cad ina">30</div><div class="cad ina">31</div><div class="cad">1</div><div class="cad">2</div><div class="cad">3</div><div class="cad">4</div></div>
-          <div class="cawk"><div class="cad">5</div><div class="cad">6</div><div class="cad">7</div><div class="cad r-s">8</div><div class="cad r-i">9</div><div class="cad r-i">10</div><div class="cad r-i">11</div></div>
-          <div class="cawk"><div class="cad r-i">12</div><div class="cad r-i">13</div><div class="cad r-i">14</div><div class="cad r-i">15</div><div class="cad r-i">16</div><div class="cad r-e">17</div><div class="cad">18</div></div>
-          <div class="cawk"><div class="cad">19</div><div class="cad">20</div><div class="cad">21</div><div class="cad">22</div><div class="cad">23</div><div class="cad">24</div><div class="cad">25</div></div>
-          <div class="cawk"><div class="cad">26</div><div class="cad">27</div><div class="cad">28</div><div class="cad">29</div><div class="cad">30</div><div class="cad ina">1</div><div class="cad ina">2</div></div>
-        </div>
-        <div class="caf"><button class="btn bt">Cancel</button><button class="btn bp">Apply</button></div>
+  <!-- Day default -->
+  <div>
+    <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Day View — Default</p>
+    <div class="cal">
+      <div class="cah"><button class="can"><span class="ms">chevron_left</span></button><span class="cat">Apr 2026</span><button class="can"><span class="ms">chevron_right</span></button></div>
+      <div class="cag">
+        <div class="cawd"><div class="cawdi">Mo</div><div class="cawdi">Tu</div><div class="cawdi">We</div><div class="cawdi">Th</div><div class="cawdi">Fr</div><div class="cawdi">Sa</div><div class="cawdi">Su</div></div>
+        <div class="cawk"><div class="cad ina">29</div><div class="cad ina">30</div><div class="cad ina">31</div><div class="cad">1</div><div class="cad">2</div><div class="cad">3</div><div class="cad">4</div></div>
+        <div class="cawk"><div class="cad">5</div><div class="cad">6</div><div class="cad">7</div><div class="cad">8</div><div class="cad">9</div><div class="cad">10</div><div class="cad">11</div></div>
+        <div class="cawk"><div class="cad">12</div><div class="cad">13</div><div class="cad">14</div><div class="cad tod">15</div><div class="cad">16</div><div class="cad">17</div><div class="cad">18</div></div>
+        <div class="cawk"><div class="cad">19</div><div class="cad">20</div><div class="cad">21</div><div class="cad">22</div><div class="cad">23</div><div class="cad">24</div><div class="cad">25</div></div>
+        <div class="cawk"><div class="cad">26</div><div class="cad">27</div><div class="cad">28</div><div class="cad">29</div><div class="cad">30</div><div class="cad ina">1</div><div class="cad ina">2</div></div>
       </div>
-    </div>
-
-    <!-- Year view -->
-    <div>
-      <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Year View</p>
-      <div class="cal">
-        <div class="cah"><button class="can"><span class="ms">chevron_left</span></button><span class="cat">2011 – 2030</span><button class="can"><span class="ms">chevron_right</span></button></div>
-        <div class="cyg">
-          <div class="cyc">2011</div><div class="cyc">2012</div><div class="cyc">2013</div><div class="cyc">2014</div>
-          <div class="cyc">2015</div><div class="cyc">2016</div><div class="cyc">2017</div><div class="cyc">2018</div>
-          <div class="cyc">2019</div><div class="cyc">2020</div><div class="cyc">2021</div><div class="cyc">2022</div>
-          <div class="cyc">2023</div><div class="cyc">2024</div><div class="cyc">2025</div><div class="cyc on">2026</div>
-          <div class="cyc">2027</div><div class="cyc">2028</div><div class="cyc">2029</div><div class="cyc">2030</div>
-        </div>
-        <div class="caf"><button class="btn bt">Cancel</button><button class="btn bp">Apply</button></div>
-      </div>
-    </div>
-
-    <!-- Month view -->
-    <div>
-      <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Month View</p>
-      <div class="cal">
-        <div class="cah"><button class="can"><span class="ms">chevron_left</span></button><span class="cat">2026</span><button class="can"><span class="ms">chevron_right</span></button></div>
-        <div class="cmg">
-          <div class="cmc">Jan</div><div class="cmc">Feb</div><div class="cmc">Mar</div>
-          <div class="cmc on">Apr</div><div class="cmc">May</div><div class="cmc">Jun</div>
-          <div class="cmc">Jul</div><div class="cmc">Ago</div><div class="cmc">Sep</div>
-          <div class="cmc">Oct</div><div class="cmc">Nov</div><div class="cmc">Dec</div>
-        </div>
-        <div class="caf"><button class="btn bt">Cancel</button><button class="btn bp">Apply</button></div>
-      </div>
+      <div class="caf"><button class="btn bt">Cancel</button><button class="btn bp">Apply</button></div>
     </div>
   </div>
+
+  <!-- Day range — interactive -->
+  <div>
+    <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Day View — Range (interactive)</p>
+    <div id="cal-range-demo"></div>
+  </div>
+
+  <!-- Year view -->
+  <div>
+    <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Year View</p>
+    <div class="cal">
+      <div class="cah"><button class="can"><span class="ms">chevron_left</span></button><span class="cat">2011 – 2030</span><button class="can"><span class="ms">chevron_right</span></button></div>
+      <div class="cyg">
+        <div class="cyc">2011</div><div class="cyc">2012</div><div class="cyc">2013</div><div class="cyc">2014</div>
+        <div class="cyc">2015</div><div class="cyc">2016</div><div class="cyc">2017</div><div class="cyc">2018</div>
+        <div class="cyc">2019</div><div class="cyc">2020</div><div class="cyc">2021</div><div class="cyc">2022</div>
+        <div class="cyc">2023</div><div class="cyc">2024</div><div class="cyc">2025</div><div class="cyc on">2026</div>
+        <div class="cyc">2027</div><div class="cyc">2028</div><div class="cyc">2029</div><div class="cyc">2030</div>
+      </div>
+      <div class="caf"><button class="btn bt">Cancel</button><button class="btn bp">Apply</button></div>
+    </div>
+  </div>
+
+  <!-- Month view -->
+  <div>
+    <p style="font-size:11px;color:var(--ts);margin-bottom:8px">Month View</p>
+    <div class="cal">
+      <div class="cah"><button class="can"><span class="ms">chevron_left</span></button><span class="cat">2026</span><button class="can"><span class="ms">chevron_right</span></button></div>
+      <div class="cmg">
+        <div class="cmc">Jan</div><div class="cmc">Feb</div><div class="cmc">Mar</div>
+        <div class="cmc on">Apr</div><div class="cmc">May</div><div class="cmc">Jun</div>
+        <div class="cmc">Jul</div><div class="cmc">Ago</div><div class="cmc">Sep</div>
+        <div class="cmc">Oct</div><div class="cmc">Nov</div><div class="cmc">Dec</div>
+      </div>
+      <div class="caf"><button class="btn bt">Cancel</button><button class="btn bp">Apply</button></div>
+    </div>
+  </div>
+
 </div>
 
 <div class="div"></div>
@@ -1239,48 +1231,78 @@ function openDp(dpId,inputId){
   buildCal(pop,document.getElementById(inputId));
 }
 
-function buildCal(container,input){
-  let y=new Date().getFullYear(),m=new Date().getMonth(),s=null,e=null;
-  function fmt(d){return`${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`}
-  function render(){
-    container.innerHTML='';
-    const cal=document.createElement('div');cal.className='cal';
-    cal.style.boxShadow='0 4px 24px rgba(0,0,0,.12)';
+function buildCal(container, input, isDemo) {
+  let y = new Date().getFullYear(), m = new Date().getMonth();
+  let s = null, e = null;
+
+  function fmt(d) {
+    return String(d.getDate()).padStart(2,'0') + '/' +
+           String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear();
+  }
+
+  function render() {
+    container.innerHTML = '';
+    const cal = document.createElement('div');
+    cal.className = 'cal';
+    if (!isDemo) cal.style.boxShadow = '0 4px 24px rgba(0,0,0,.12)';
+
     // header
-    const hdr=document.createElement('div');hdr.className='cah';
-    const prev=document.createElement('button');prev.className='can';prev.innerHTML='<span class="ms">chevron_left</span>';
-    prev.onclick=()=>{m--;if(m<0){m=11;y--;}render()};
-    const title=document.createElement('span');title.className='cat';
-    title.textContent=new Date(y,m,1).toLocaleString('en',{month:'short',year:'numeric'});
-    const nxt=document.createElement('button');nxt.className='can';nxt.innerHTML='<span class="ms">chevron_right</span>';
-    nxt.onclick=()=>{m++;if(m>11){m=0;y++;}render()};
-    hdr.appendChild(prev);hdr.appendChild(title);hdr.appendChild(nxt);cal.appendChild(hdr);
+    const hdr = document.createElement('div'); hdr.className = 'cah';
+    const prev = document.createElement('button'); prev.className = 'can';
+    prev.innerHTML = '<span class="ms">chevron_left</span>';
+    prev.onclick = () => { m--; if (m < 0) { m = 11; y--; } render(); };
+    const title = document.createElement('span'); title.className = 'cat';
+    title.textContent = new Date(y, m, 1).toLocaleString('en', {month:'short', year:'numeric'});
+    const nxt = document.createElement('button'); nxt.className = 'can';
+    nxt.innerHTML = '<span class="ms">chevron_right</span>';
+    nxt.onclick = () => { m++; if (m > 11) { m = 0; y++; } render(); };
+    hdr.append(prev, title, nxt);
+    cal.appendChild(hdr);
+
     // grid
-    const grid=document.createElement('div');grid.className='cag';
-    const wds=document.createElement('div');wds.className='cawd';
-    ['Mo','Tu','We','Th','Fr','Sa','Su'].forEach(d=>{const di=document.createElement('div');di.className='cawdi';di.textContent=d;wds.appendChild(di)});
+    const grid = document.createElement('div'); grid.className = 'cag';
+    const wds = document.createElement('div'); wds.className = 'cawd';
+    ['Mo','Tu','We','Th','Fr','Sa','Su'].forEach(d => {
+      const el = document.createElement('div'); el.className = 'cawdi'; el.textContent = d;
+      wds.appendChild(el);
+    });
     grid.appendChild(wds);
-    const fd=new Date(y,m,1).getDay(),offset=(fd===0?6:fd-1),dim=new Date(y,m+1,0).getDate(),dip=new Date(y,m,0).getDate();
-    let cells=[];
-    for(let i=offset-1;i>=0;i--)cells.push({d:dip-i,a:false});
-    for(let i=1;i<=dim;i++)cells.push({d:i,a:true});
-    while(cells.length%7!==0)cells.push({d:cells.length-dim-offset+1,a:false});
-    for(let w=0;w<cells.length/7;w++){
-      const wk=document.createElement('div');wk.className='cawk';
-      for(let dd=0;dd<7;dd++){
-        const cell=cells[w*7+dd];
-        const div=document.createElement('div');
-        div.className='cad'+(cell.a?'':' ina');
-        div.textContent=cell.d;
-        if(cell.a){
-          const cd=new Date(y,m,cell.d);
-          if(s&&cd.toDateString()===s.toDateString())div.classList.add('r-s');
-          if(e&&cd.toDateString()===e.toDateString())div.classList.add('r-e');
-          if(s&&e&&cd>s&&cd<e)div.classList.add('r-i');
-          div.onclick=()=>{
-            const clicked=new Date(y,m,cell.d);
-            if(!s||(s&&e)){s=clicked;e=null;}
-            else{if(clicked<s){e=s;s=clicked;}else e=clicked;}
+
+    const fd = new Date(y, m, 1).getDay();
+    const offset = fd === 0 ? 6 : fd - 1;
+    const dim = new Date(y, m+1, 0).getDate();
+    const dip = new Date(y, m, 0).getDate();
+
+    let cells = [];
+    for (let i = offset-1; i >= 0; i--) cells.push({d: dip-i, a: false});
+    for (let i = 1; i <= dim; i++) cells.push({d: i, a: true});
+    while (cells.length % 7 !== 0) cells.push({d: cells.length - dim - offset + 1, a: false});
+
+    for (let w = 0; w < cells.length / 7; w++) {
+      const wk = document.createElement('div'); wk.className = 'cawk';
+      for (let dd = 0; dd < 7; dd++) {
+        const cell = cells[w*7+dd];
+        const div = document.createElement('div');
+        const cd = cell.a ? new Date(y, m, cell.d) : null;
+
+        let cls = 'cad';
+        if (!cell.a) { cls += ' ina'; }
+        else {
+          const isS = s && cd.toDateString() === s.toDateString();
+          const isE = e && cd.toDateString() === e.toDateString();
+          const inR = s && e && cd > s && cd < e;
+          if (isS) cls += ' r-s';
+          else if (isE) cls += ' r-e';
+          else if (inR) cls += ' r-i';
+        }
+        div.className = cls;
+        div.textContent = cell.d;
+
+        if (cell.a) {
+          div.onclick = () => {
+            const clicked = new Date(y, m, cell.d);
+            if (!s || (s && e)) { s = clicked; e = null; }
+            else { if (clicked < s) { e = s; s = clicked; } else { e = clicked; } }
             render();
           };
         }
@@ -1289,22 +1311,33 @@ function buildCal(container,input){
       grid.appendChild(wk);
     }
     cal.appendChild(grid);
+
     // footer
-    const ft=document.createElement('div');ft.className='caf';
-    const cb=document.createElement('button');cb.className='btn bt';cb.textContent='Cancel';
-    cb.onclick=()=>{s=null;e=null;if(input)input.value='';container.classList.remove('open')};
-    const ab=document.createElement('button');ab.className='btn bp';ab.textContent='Apply';
-    ab.onclick=()=>{
-      if(s&&e)input.value=fmt(s)+' to '+fmt(e);
-      else if(s)input.value=fmt(s);
-      container.classList.remove('open');
+    const ft = document.createElement('div'); ft.className = 'caf';
+    const cb = document.createElement('button'); cb.className = 'btn bt'; cb.textContent = 'Cancel';
+    cb.onclick = () => {
+      s = null; e = null;
+      if (input) input.value = '';
+      if (!isDemo) container.classList.remove('open');
+      else render();
     };
-    ft.appendChild(cb);ft.appendChild(ab);cal.appendChild(ft);
+    const ab = document.createElement('button'); ab.className = 'btn bp'; ab.textContent = 'Apply';
+    ab.onclick = () => {
+      if (input) {
+        if (s && e) input.value = fmt(s) + ' to ' + fmt(e);
+        else if (s) input.value = fmt(s);
+      }
+      if (!isDemo) container.classList.remove('open');
+    };
+    ft.append(cb, ab);
+    cal.appendChild(ft);
     container.appendChild(cal);
   }
+
   render();
 }
-
+// render interactive demo calendar
+buildCal(document.getElementById('cal-range-demo'), null, true);
 document.addEventListener('click',e=>{
   document.querySelectorAll('.dpp.open').forEach(p=>{
     if(!p.closest('.dpw').contains(e.target))p.classList.remove('open');
